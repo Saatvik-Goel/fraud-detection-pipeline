@@ -1,0 +1,30 @@
+# Data files — never commit raw data
+data/raw/
+data/processed/
+*.csv
+*.parquet
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.env
+venv/
+.venv/
+
+# ML artifacts — use MLflow instead
+*.pkl
+*.joblib
+models/
+
+# Secrets
+.env
+*.pem
+*.key
+config/secrets.yml
+
+# Notebooks checkpoints
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
