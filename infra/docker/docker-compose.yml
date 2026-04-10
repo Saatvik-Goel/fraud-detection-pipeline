@@ -1,7 +1,3 @@
-# Root level convenience file
-# Just points to the actual compose file
-# Run: docker-compose up -d
-
 version: '3.8'
 
 services:
