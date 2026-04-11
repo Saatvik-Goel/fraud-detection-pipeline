@@ -6,7 +6,7 @@ from pyspark.sql.types import (
 import pandas as pd
 
 # Load usable columns from CSV
-usable_cols_df = pd.read_csv("usable_columns.csv")
+usable_cols_df = pd.read_csv("data/processed/usable_columns.csv")
 USABLE_COLUMNS = usable_cols_df.iloc[:, 0].dropna().tolist()
 
 # 🔧 Define a mapping for known column types
