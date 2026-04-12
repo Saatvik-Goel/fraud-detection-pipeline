@@ -156,7 +156,7 @@ def main():
     feature_df = compute_features(parsed_df)
 
     # Step 1: Write to console first to verify features are computed correctly
-    console_query = write_to_console(feature_df)
+    console_query = write_to_redis(feature_df)
 
     logger.info("Streaming started. Waiting for data...")
     logger.info("Features will appear every 30 seconds.")
