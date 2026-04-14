@@ -1,0 +1,8 @@
+{
+  "dataset_drift_detected": false,
+  "drift_share": 0.5,
+  "n_drifted_features": 5,
+  "n_features": 15,
+  "timestamp": "2026-04-14T09:27:28.446600",
+  "html_report": "reports/drift_report_20260414_145727.html"
+}
