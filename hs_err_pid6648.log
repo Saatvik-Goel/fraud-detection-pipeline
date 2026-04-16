@@ -1,0 +1,1059 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 1841328 bytes for Chunk::new
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (arena.cpp:184), pid=6648, tid=11924
+#
+# JRE version: Java(TM) SE Runtime Environment (20.0.1+9) (build 20.0.1+9-29)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (20.0.1+9-29, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Xmx2g -XX:+IgnoreUnrecognizedVMOptions --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED --add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED -Djdk.reflect.useDirectMethodHandle=false org.apache.spark.deploy.SparkSubmit --conf spark.driver.memory=2g --conf spark.jars.packages=org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.3 --conf spark.app.name=FraudDetectionStreaming --conf spark.sql.streaming.checkpointLocation=checkpoints/ --conf spark.sql.shuffle.partitions=4 pyspark-shell
+
+Host: AMD Ryzen 5 5600H with Radeon Graphics         , 12 cores, 7G,  Windows 11 , 64 bit Build 26100 (10.0.26100.8115)
+Time: Thu Apr 16 21:59:10 2026 India Standard Time elapsed time: 90.316450 seconds (0d 0h 1m 30s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000023b1351b870):  JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=11924, stack(0x000000ba60300000,0x000000ba60400000)]
+
+
+Current CompileTask:
+C2:  90316 17080       4       org.codehaus.janino.Parser::parseConditionalOrExpression (48 bytes)
+
+Stack: [0x000000ba60300000,0x000000ba60400000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x6bb95a]
+V  [jvm.dll+0x8485fa]
+V  [jvm.dll+0x84a1f5]
+V  [jvm.dll+0x84a8f3]
+V  [jvm.dll+0x280b0f]
+V  [jvm.dll+0xc2b11]
+V  [jvm.dll+0xc2e35]
+V  [jvm.dll+0x3bb17c]
+V  [jvm.dll+0x3857f5]
+V  [jvm.dll+0x384c6a]
+V  [jvm.dll+0x24b259]
+V  [jvm.dll+0x24a651]
+V  [jvm.dll+0x1ce491]
+V  [jvm.dll+0x259e1b]
+V  [jvm.dll+0x2584f0]
+V  [jvm.dll+0x3f2895]
+V  [jvm.dll+0x7f4b56]
+V  [jvm.dll+0x6ba5cb]
+C  [ucrtbase.dll+0x37b0]
+C  [KERNEL32.DLL+0x2e8d7]
+C  [ntdll.dll+0x8c3fc]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x0000023b21cca200, length=106, elements={
+0x0000023b7466b380, 0x0000023b13501850, 0x0000023b135030a0, 0x0000023b13507180,
+0x0000023b13507ac0, 0x0000023b13509e20, 0x0000023b13511ee0, 0x0000023b1351b870,
+0x0000023b17820090, 0x0000023b17a4ffd0, 0x0000023b17a58530, 0x0000023b1aa382e0,
+0x0000023b1aa39820, 0x0000023b1aa37840, 0x0000023b1aa37d90, 0x0000023b1aa38830,
+0x0000023b1aa39d70, 0x0000023b1aa38d80, 0x0000023b1aa392d0, 0x0000023b1aa3a810,
+0x0000023b19798180, 0x0000023b1979ac00, 0x0000023b19798c20, 0x0000023b19799c10,
+0x0000023b1979bbf0, 0x0000023b1979a160, 0x0000023b1979a6b0, 0x0000023b1979b6a0,
+0x0000023b197996c0, 0x0000023b1979c140, 0x0000023b197986d0, 0x0000023b1979c690,
+0x0000023b1979cbe0, 0x0000023b19799170, 0x0000023b1979f660, 0x0000023b1979e670,
+0x0000023b1979d130, 0x0000023b1979dbd0, 0x0000023b1979fbb0, 0x0000023b1979d680,
+0x0000023b1979f110, 0x0000023b1979e120, 0x0000023b1979ebc0, 0x0000023b1b36eaf0,
+0x0000023b1b36e050, 0x0000023b1b36d5b0, 0x0000023b1b36e5a0, 0x0000023b1b36db00,
+0x0000023b1b36f040, 0x0000023b1b36f590, 0x0000023b1b36fae0, 0x0000023b1b36c070,
+0x0000023b1b36c5c0, 0x0000023b1b370580, 0x0000023b1b370030, 0x0000023b1b36cb10,
+0x0000023b1b370ad0, 0x0000023b1b36d060, 0x0000023b1b372560, 0x0000023b1b373550,
+0x0000023b1b371020, 0x0000023b1b371570, 0x0000023b1b371ac0, 0x0000023b1b372ab0,
+0x0000023b1b373000, 0x0000023b1aa83550, 0x0000023b1aa80580, 0x0000023b1b725010,
+0x0000023b1b727a90, 0x0000023b1b727540, 0x0000023b1b726000, 0x0000023b1b726ff0,
+0x0000023b22c210a0, 0x0000023b22c22b30, 0x0000023b22c225e0, 0x0000023b22c235d0,
+0x0000023b22c26050, 0x0000023b22c27590, 0x0000023b22c28030, 0x0000023b18ffbbb0,
+0x0000023b18ffc100, 0x0000023b18ffe0e0, 0x0000023b18ffdb90, 0x0000023b18ffe630,
+0x0000023b18ffb110, 0x0000023b18ffc650, 0x0000023b18ffb660, 0x0000023b18ffcba0,
+0x0000023b22c265a0, 0x0000023b19f907c0, 0x0000023b19f8f7d0, 0x0000023b19f8f280,
+0x0000023b19f8e7e0, 0x0000023b19f8ed30, 0x0000023b21bab3b0, 0x0000023b21ba93d0,
+0x0000023b21ba8930, 0x0000023b21ba9920, 0x0000023b21ba8e80, 0x0000023b21bab900,
+0x0000023b21ba9e70, 0x0000023b21ba83e0, 0x0000023b21baa3c0, 0x0000023b21baa910,
+0x0000023b182c5b20, 0x0000023b22c23080
+}
+
+Java Threads: ( => current thread )
+  0x0000023b7466b380 JavaThread "main" [_thread_in_native, id=22424, stack(0x000000ba5f600000,0x000000ba5f700000)]
+  0x0000023b13501850 JavaThread "Reference Handler" daemon [_thread_blocked, id=21132, stack(0x000000ba5fd00000,0x000000ba5fe00000)]
+  0x0000023b135030a0 JavaThread "Finalizer" daemon [_thread_blocked, id=7488, stack(0x000000ba5fe00000,0x000000ba5ff00000)]
+  0x0000023b13507180 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=19844, stack(0x000000ba5ff00000,0x000000ba60000000)]
+  0x0000023b13507ac0 JavaThread "Attach Listener" daemon [_thread_blocked, id=19152, stack(0x000000ba60000000,0x000000ba60100000)]
+  0x0000023b13509e20 JavaThread "Service Thread" daemon [_thread_blocked, id=25500, stack(0x000000ba60100000,0x000000ba60200000)]
+  0x0000023b13511ee0 JavaThread "Monitor Deflation Thread" daemon [_thread_blocked, id=8532, stack(0x000000ba60200000,0x000000ba60300000)]
+=>0x0000023b1351b870 JavaThread "C2 CompilerThread0" daemon [_thread_in_native, id=11924, stack(0x000000ba60300000,0x000000ba60400000)]
+  0x0000023b17820090 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=22552, stack(0x000000ba60400000,0x000000ba60500000)]
+  0x0000023b17a4ffd0 JavaThread "Common-Cleaner" daemon [_thread_blocked, id=24936, stack(0x000000ba60500000,0x000000ba60600000)]
+  0x0000023b17a58530 JavaThread "Notification Thread" daemon [_thread_blocked, id=3428, stack(0x000000ba60600000,0x000000ba60700000)]
+  0x0000023b1aa382e0 JavaThread "org.apache.hadoop.fs.FileSystem$Statistics$StatisticsDataReferenceCleaner" daemon [_thread_blocked, id=25288, stack(0x000000ba61500000,0x000000ba61600000)]
+  0x0000023b1aa39820 JavaThread "Thread-2" [_thread_in_native, id=17600, stack(0x000000ba61600000,0x000000ba61700000)]
+  0x0000023b1aa37840 JavaThread "Thread-3" [_thread_blocked, id=8784, stack(0x000000ba61400000,0x000000ba61500000)]
+  0x0000023b1aa37d90 JavaThread "rpc-boss-3-1" daemon [_thread_in_native, id=14440, stack(0x000000ba61700000,0x000000ba61800000)]
+  0x0000023b1aa38830 JavaThread "dispatcher-event-loop-0" daemon [_thread_blocked, id=22124, stack(0x000000ba61800000,0x000000ba61900000)]
+  0x0000023b1aa39d70 JavaThread "dispatcher-event-loop-1" daemon [_thread_blocked, id=23768, stack(0x000000ba61900000,0x000000ba61a00000)]
+  0x0000023b1aa38d80 JavaThread "dispatcher-event-loop-2" daemon [_thread_blocked, id=15988, stack(0x000000ba61a00000,0x000000ba61b00000)]
+  0x0000023b1aa392d0 JavaThread "dispatcher-event-loop-3" daemon [_thread_blocked, id=17864, stack(0x000000ba61b00000,0x000000ba61c00000)]
+  0x0000023b1aa3a810 JavaThread "dispatcher-event-loop-4" daemon [_thread_blocked, id=21096, stack(0x000000ba61c00000,0x000000ba61d00000)]
+  0x0000023b19798180 JavaThread "dispatcher-event-loop-5" daemon [_thread_blocked, id=7480, stack(0x000000ba61d00000,0x000000ba61e00000)]
+  0x0000023b1979ac00 JavaThread "dispatcher-event-loop-6" daemon [_thread_blocked, id=4384, stack(0x000000ba61e00000,0x000000ba61f00000)]
+  0x0000023b19798c20 JavaThread "dispatcher-event-loop-7" daemon [_thread_blocked, id=11480, stack(0x000000ba61f00000,0x000000ba62000000)]
+  0x0000023b19799c10 JavaThread "dispatcher-event-loop-8" daemon [_thread_blocked, id=21404, stack(0x000000ba62000000,0x000000ba62100000)]
+  0x0000023b1979bbf0 JavaThread "dispatcher-event-loop-9" daemon [_thread_blocked, id=8684, stack(0x000000ba62100000,0x000000ba62200000)]
+  0x0000023b1979a160 JavaThread "dispatcher-event-loop-10" daemon [_thread_blocked, id=23452, stack(0x000000ba62200000,0x000000ba62300000)]
+  0x0000023b1979a6b0 JavaThread "dispatcher-event-loop-11" daemon [_thread_blocked, id=24964, stack(0x000000ba62300000,0x000000ba62400000)]
+  0x0000023b1979b6a0 JavaThread "map-output-dispatcher-0" daemon [_thread_blocked, id=24644, stack(0x000000ba62400000,0x000000ba62500000)]
+  0x0000023b197996c0 JavaThread "map-output-dispatcher-1" daemon [_thread_blocked, id=24112, stack(0x000000ba62500000,0x000000ba62600000)]
+  0x0000023b1979c140 JavaThread "map-output-dispatcher-2" daemon [_thread_blocked, id=20432, stack(0x000000ba62600000,0x000000ba62700000)]
+  0x0000023b197986d0 JavaThread "map-output-dispatcher-3" daemon [_thread_blocked, id=18384, stack(0x000000ba62700000,0x000000ba62800000)]
+  0x0000023b1979c690 JavaThread "map-output-dispatcher-4" daemon [_thread_blocked, id=24352, stack(0x000000ba62800000,0x000000ba62900000)]
+  0x0000023b1979cbe0 JavaThread "map-output-dispatcher-5" daemon [_thread_blocked, id=9164, stack(0x000000ba62900000,0x000000ba62a00000)]
+  0x0000023b19799170 JavaThread "map-output-dispatcher-6" daemon [_thread_blocked, id=18528, stack(0x000000ba62a00000,0x000000ba62b00000)]
+  0x0000023b1979f660 JavaThread "map-output-dispatcher-7" daemon [_thread_blocked, id=9004, stack(0x000000ba62b00000,0x000000ba62c00000)]
+  0x0000023b1979e670 JavaThread "dispatcher-BlockManagerMaster" daemon [_thread_blocked, id=23972, stack(0x000000ba62c00000,0x000000ba62d00000)]
+  0x0000023b1979d130 JavaThread "dispatcher-BlockManagerEndpoint1" daemon [_thread_blocked, id=17128, stack(0x000000ba62d00000,0x000000ba62e00000)]
+  0x0000023b1979dbd0 JavaThread "RemoteBlock-temp-file-clean-thread" daemon [_thread_blocked, id=22284, stack(0x000000ba62e00000,0x000000ba62f00000)]
+  0x0000023b1979fbb0 JavaThread "refresh progress" daemon [_thread_blocked, id=24768, stack(0x000000ba62f00000,0x000000ba63000000)]
+  0x0000023b1979d680 JavaThread "SparkUI-63" daemon [_thread_in_native, id=17552, stack(0x000000ba63000000,0x000000ba63100000)]
+  0x0000023b1979f110 JavaThread "SparkUI-64" daemon [_thread_in_native, id=6920, stack(0x000000ba63100000,0x000000ba63200000)]
+  0x0000023b1979e120 JavaThread "SparkUI-65" daemon [_thread_in_native, id=21328, stack(0x000000ba63200000,0x000000ba63300000)]
+  0x0000023b1979ebc0 JavaThread "SparkUI-66" daemon [_thread_in_native, id=5804, stack(0x000000ba63300000,0x000000ba63400000)]
+  0x0000023b1b36eaf0 JavaThread "SparkUI-67" daemon [_thread_in_native, id=9264, stack(0x000000ba63400000,0x000000ba63500000)]
+  0x0000023b1b36e050 JavaThread "SparkUI-68" daemon [_thread_in_native, id=25504, stack(0x000000ba63500000,0x000000ba63600000)]
+  0x0000023b1b36d5b0 JavaThread "SparkUI-69-acceptor-0@6d854396-ServerConnector@6342b056{HTTP/1.1, (http/1.1)}{0.0.0.0:4040}" daemon [_thread_in_native, id=20992, stack(0x000000ba63600000,0x000000ba63700000)]
+  0x0000023b1b36e5a0 JavaThread "SparkUI-70" daemon [_thread_blocked, id=9800, stack(0x000000ba63700000,0x000000ba63800000)]
+  0x0000023b1b36db00 JavaThread "Thread-15" [_thread_in_native, id=12016, stack(0x000000ba63900000,0x000000ba63a00000)]
+  0x0000023b1b36f040 JavaThread "dispatcher-HeartbeatReceiver" daemon [_thread_blocked, id=23968, stack(0x000000ba61300000,0x000000ba61400000)]
+  0x0000023b1b36f590 JavaThread "heartbeat-receiver-event-loop-thread" daemon [_thread_blocked, id=19388, stack(0x000000ba63800000,0x000000ba63900000)]
+  0x0000023b1b36fae0 JavaThread "netty-rpc-env-timeout" daemon [_thread_blocked, id=15688, stack(0x000000ba63a00000,0x000000ba63b00000)]
+  0x0000023b1b36c070 JavaThread "task-starvation-timer" daemon [_thread_blocked, id=21304, stack(0x000000ba63b00000,0x000000ba63c00000)]
+  0x0000023b1b36c5c0 JavaThread "task-abort-timer" daemon [_thread_blocked, id=12960, stack(0x000000ba63c00000,0x000000ba63d00000)]
+  0x0000023b1b370580 JavaThread "dag-scheduler-event-loop" daemon [_thread_blocked, id=20612, stack(0x000000ba63d00000,0x000000ba63e00000)]
+  0x0000023b1b370030 JavaThread "driver-heartbeater" daemon [_thread_blocked, id=25192, stack(0x000000ba63e00000,0x000000ba63f00000)]
+  0x0000023b1b36cb10 JavaThread "executor-kill-mark-cleanup" daemon [_thread_blocked, id=16816, stack(0x000000ba63f00000,0x000000ba64000000)]
+  0x0000023b1b370ad0 JavaThread "executor-heartbeater" daemon [_thread_blocked, id=17292, stack(0x000000ba64000000,0x000000ba64100000)]
+  0x0000023b1b36d060 JavaThread "files-client-5-1" daemon [_thread_in_native, id=2248, stack(0x000000ba64100000,0x000000ba64200000)]
+  0x0000023b1b372560 JavaThread "rpc-server-4-1" daemon [_thread_in_native, id=18140, stack(0x000000ba64300000,0x000000ba64400000)]
+  0x0000023b1b373550 JavaThread "shuffle-boss-7-1" daemon [_thread_in_native, id=6012, stack(0x000000ba64400000,0x000000ba64500000)]
+  0x0000023b1b371020 JavaThread "Spark Context Cleaner" daemon [_thread_blocked, id=17000, stack(0x000000ba64600000,0x000000ba64700000)]
+  0x0000023b1b371570 JavaThread "context-cleaner-periodic-gc" daemon [_thread_blocked, id=12904, stack(0x000000ba64700000,0x000000ba64800000)]
+  0x0000023b1b371ac0 JavaThread "spark-listener-group-appStatus" daemon [_thread_blocked, id=24872, stack(0x000000ba64800000,0x000000ba64900000)]
+  0x0000023b1b372ab0 JavaThread "spark-listener-group-executorManagement" daemon [_thread_blocked, id=21908, stack(0x000000ba64900000,0x000000ba64a00000)]
+  0x0000023b1b373000 JavaThread "element-tracking-store-worker" daemon [_thread_blocked, id=24228, stack(0x000000ba64a00000,0x000000ba64b00000)]
+  0x0000023b1aa83550 JavaThread "spark-listener-group-streams" daemon [_thread_blocked, id=16572, stack(0x000000ba64500000,0x000000ba64600000)]
+  0x0000023b1aa80580 JavaThread "stream execution thread for [id = 09a72264-b250-4762-ab46-75209d2328f4, runId = 18f1c996-e1ef-4dd8-ae74-39bd401dfd18]" daemon [_thread_blocked, id=5540, stack(0x000000ba64c00000,0x000000ba64d00000)]
+  0x0000023b1b725010 JavaThread "Executor task launch worker for task 1.0 in stage 11.0 (TID 15)" daemon [_thread_blocked, id=14800, stack(0x000000ba64d00000,0x000000ba64e00000)]
+  0x0000023b1b727a90 JavaThread "commons-pool-evictor" daemon [_thread_blocked, id=8888, stack(0x000000ba64e00000,0x000000ba64f00000)]
+  0x0000023b1b727540 JavaThread "kafka-fetched-data-cache-evictor" daemon [_thread_blocked, id=25268, stack(0x000000ba64f00000,0x000000ba65000000)]
+  0x0000023b1b726000 JavaThread "task-result-getter-0" daemon [_thread_blocked, id=15348, stack(0x000000ba65000000,0x000000ba65100000)]
+  0x0000023b1b726ff0 JavaThread "state-store-maintenance-task" daemon [_thread_blocked, id=20536, stack(0x000000ba65100000,0x000000ba65200000)]
+  0x0000023b22c210a0 JavaThread "task-result-getter-1" daemon [_thread_blocked, id=24672, stack(0x000000ba64b00000,0x000000ba64c00000)]
+  0x0000023b22c22b30 JavaThread "Executor task launch worker for task 3.0 in stage 11.0 (TID 17)" daemon [_thread_blocked, id=21272, stack(0x000000ba65300000,0x000000ba65400000)]
+  0x0000023b22c225e0 JavaThread "Executor task launch worker for task 0.0 in stage 13.0 (TID 19)" daemon [_thread_in_native, id=14764, stack(0x000000ba65400000,0x000000ba65500000)]
+  0x0000023b22c235d0 JavaThread "Executor task launch worker for task 0.0 in stage 11.0 (TID 14)" daemon [_thread_blocked, id=24916, stack(0x000000ba65500000,0x000000ba65600000)]
+  0x0000023b22c26050 JavaThread "task-result-getter-2" daemon [_thread_blocked, id=24500, stack(0x000000ba66100000,0x000000ba66200000)]
+  0x0000023b22c27590 JavaThread "task-result-getter-3" daemon [_thread_blocked, id=25316, stack(0x000000ba66200000,0x000000ba66300000)]
+  0x0000023b22c28030 JavaThread "kafka-admin-client-thread | adminclient-1" daemon [_thread_in_native, id=19712, stack(0x000000ba65200000,0x000000ba65300000)]
+  0x0000023b18ffbbb0 JavaThread "block-manager-storage-async-thread-pool-12" daemon [_thread_blocked, id=15480, stack(0x000000ba66f00000,0x000000ba67000000)]
+  0x0000023b18ffc100 JavaThread "block-manager-storage-async-thread-pool-13" daemon [_thread_blocked, id=9844, stack(0x000000ba67000000,0x000000ba67100000)]
+  0x0000023b18ffe0e0 JavaThread "block-manager-storage-async-thread-pool-14" daemon [_thread_blocked, id=9824, stack(0x000000ba67100000,0x000000ba67200000)]
+  0x0000023b18ffdb90 JavaThread "block-manager-ask-thread-pool-8" daemon [_thread_blocked, id=19376, stack(0x000000ba67200000,0x000000ba67300000)]
+  0x0000023b18ffe630 JavaThread "block-manager-ask-thread-pool-9" daemon [_thread_blocked, id=19756, stack(0x000000ba67300000,0x000000ba67400000)]
+  0x0000023b18ffb110 JavaThread "block-manager-storage-async-thread-pool-15" daemon [_thread_blocked, id=25508, stack(0x000000ba67400000,0x000000ba67500000)]
+  0x0000023b18ffc650 JavaThread "block-manager-storage-async-thread-pool-16" daemon [_thread_blocked, id=5580, stack(0x000000ba67500000,0x000000ba67600000)]
+  0x0000023b18ffb660 JavaThread "block-manager-storage-async-thread-pool-17" daemon [_thread_blocked, id=17284, stack(0x000000ba67600000,0x000000ba67700000)]
+  0x0000023b18ffcba0 JavaThread "block-manager-ask-thread-pool-10" daemon [_thread_blocked, id=19820, stack(0x000000ba67700000,0x000000ba67800000)]
+  0x0000023b22c265a0 JavaThread "block-manager-ask-thread-pool-11" daemon [_thread_blocked, id=23284, stack(0x000000ba67800000,0x000000ba67900000)]
+  0x0000023b19f907c0 JavaThread "block-manager-storage-async-thread-pool-18" daemon [_thread_blocked, id=19116, stack(0x000000ba5f400000,0x000000ba5f500000)]
+  0x0000023b19f8f7d0 JavaThread "block-manager-storage-async-thread-pool-19" daemon [_thread_blocked, id=22684, stack(0x000000ba5f500000,0x000000ba5f600000)]
+  0x0000023b19f8f280 JavaThread "block-manager-storage-async-thread-pool-20" daemon [_thread_blocked, id=23280, stack(0x000000ba66000000,0x000000ba66100000)]
+  0x0000023b19f8e7e0 JavaThread "block-manager-ask-thread-pool-12" daemon [_thread_blocked, id=15016, stack(0x000000ba67900000,0x000000ba67a00000)]
+  0x0000023b19f8ed30 JavaThread "block-manager-ask-thread-pool-13" daemon [_thread_blocked, id=11764, stack(0x000000ba67a00000,0x000000ba67b00000)]
+  0x0000023b21bab3b0 JavaThread "block-manager-storage-async-thread-pool-21" daemon [_thread_blocked, id=21076, stack(0x000000ba67b00000,0x000000ba67c00000)]
+  0x0000023b21ba93d0 JavaThread "block-manager-storage-async-thread-pool-22" daemon [_thread_blocked, id=15036, stack(0x000000ba67c00000,0x000000ba67d00000)]
+  0x0000023b21ba8930 JavaThread "block-manager-storage-async-thread-pool-23" daemon [_thread_blocked, id=6956, stack(0x000000ba67d00000,0x000000ba67e00000)]
+  0x0000023b21ba9920 JavaThread "block-manager-ask-thread-pool-14" daemon [_thread_blocked, id=2624, stack(0x000000ba67e00000,0x000000ba67f00000)]
+  0x0000023b21ba8e80 JavaThread "block-manager-ask-thread-pool-15" daemon [_thread_blocked, id=13036, stack(0x000000ba67f00000,0x000000ba68000000)]
+  0x0000023b21bab900 JavaThread "block-manager-storage-async-thread-pool-24" daemon [_thread_blocked, id=1464, stack(0x000000ba68000000,0x000000ba68100000)]
+  0x0000023b21ba9e70 JavaThread "block-manager-storage-async-thread-pool-25" daemon [_thread_blocked, id=16984, stack(0x000000ba68100000,0x000000ba68200000)]
+  0x0000023b21ba83e0 JavaThread "block-manager-storage-async-thread-pool-26" daemon [_thread_blocked, id=14868, stack(0x000000ba68200000,0x000000ba68300000)]
+  0x0000023b21baa3c0 JavaThread "block-manager-ask-thread-pool-16" daemon [_thread_blocked, id=19344, stack(0x000000ba5f300000,0x000000ba5f400000)]
+  0x0000023b21baa910 JavaThread "block-manager-ask-thread-pool-17" daemon [_thread_blocked, id=9972, stack(0x000000ba68300000,0x000000ba68400000)]
+  0x0000023b182c5b20 JavaThread "C2 CompilerThread1" daemon [_thread_in_native, id=24480, stack(0x000000ba68400000,0x000000ba68500000)]
+  0x0000023b22c23080 JavaThread "Thread-255" daemon [_thread_in_native, id=2808, stack(0x000000ba65600000,0x000000ba65700000)]
+
+Other Threads:
+  0x0000023b134e2140 VMThread "VM Thread" [stack: 0x000000ba5fc00000,0x000000ba5fd00000] [id=22820]
+  0x0000023b17a58c40 WatcherThread "VM Periodic Task Thread" [stack: 0x000000ba60700000,0x000000ba60800000] [id=20660]
+  0x0000023b746cd980 WorkerThread "GC Thread#0" [stack: 0x000000ba5f700000,0x000000ba5f800000] [id=21008]
+  0x0000023b17bf3d90 WorkerThread "GC Thread#1" [stack: 0x000000ba60900000,0x000000ba60a00000] [id=15312]
+  0x0000023b17bf4600 WorkerThread "GC Thread#2" [stack: 0x000000ba60a00000,0x000000ba60b00000] [id=7572]
+  0x0000023b17bf3ac0 WorkerThread "GC Thread#3" [stack: 0x000000ba60b00000,0x000000ba60c00000] [id=920]
+  0x0000023b17bf4060 WorkerThread "GC Thread#4" [stack: 0x000000ba60c00000,0x000000ba60d00000] [id=14620]
+  0x0000023b17bf4e70 WorkerThread "GC Thread#5" [stack: 0x000000ba60d00000,0x000000ba60e00000] [id=1112]
+  0x0000023b17bf5410 WorkerThread "GC Thread#6" [stack: 0x000000ba60e00000,0x000000ba60f00000] [id=2556]
+  0x0000023b190a74d0 WorkerThread "GC Thread#7" [stack: 0x000000ba60800000,0x000000ba60900000] [id=3496]
+  0x0000023b190a8880 WorkerThread "GC Thread#8" [stack: 0x000000ba60f00000,0x000000ba61000000] [id=9584]
+  0x0000023b190a8e20 WorkerThread "GC Thread#9" [stack: 0x000000ba61000000,0x000000ba61100000] [id=12368]
+  0x0000023b746e1360 ConcurrentGCThread "G1 Main Marker" [stack: 0x000000ba5f800000,0x000000ba5f900000] [id=14772]
+  0x0000023b746e1b40 WorkerThread "G1 Conc#0" [stack: 0x000000ba5f900000,0x000000ba5fa00000] [id=24584]
+  0x0000023b190a77a0 WorkerThread "G1 Conc#1" [stack: 0x000000ba61100000,0x000000ba61200000] [id=17504]
+  0x0000023b190a63f0 WorkerThread "G1 Conc#2" [stack: 0x000000ba61200000,0x000000ba61300000] [id=9956]
+  0x0000023b133a18a0 ConcurrentGCThread "G1 Refine#0" [stack: 0x000000ba5fa00000,0x000000ba5fb00000] [id=23628]
+  0x0000023b133a1ff0 ConcurrentGCThread "G1 Service" [stack: 0x000000ba5fb00000,0x000000ba5fc00000] [id=23640]
+
+Threads with active compile tasks:
+C2 CompilerThread0    90371 17080       4       org.codehaus.janino.Parser::parseConditionalOrExpression (48 bytes)
+C2 CompilerThread1    90371 17079       4       org.codehaus.janino.Parser::parseConditionalExpression (63 bytes)
+
+VM state: not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap address: 0x0000000080000000, size: 2048 MB, Compressed Oops mode: 32-bit
+
+CDS archive(s) mapped at: [0x0000000800000000-0x0000000800c60000-0x0000000800c60000), size 12976128, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 0.
+Compressed class space mapped at: 0x0000000801000000-0x0000000841000000, reserved size: 1073741824
+Narrow klass base: 0x0000000800000000, Narrow klass shift: 0, Narrow klass range: 0x100000000
+
+GC Precious Log:
+ CardTable entry size: 512
+ Card Set container configuration: InlinePtr #cards 5 size 8 Array Of Cards #cards 12 size 40 Howl #buckets 4 coarsen threshold 1843 Howl Bitmap #cards 512 size 80 coarsen threshold 460 Card regions per heap region 1 cards per card region 2048
+ CPUs: 12 total, 12 available
+ Memory: 7562M
+ Large Page Support: Disabled
+ NUMA Support: Disabled
+ Compressed Oops: Enabled (32-bit)
+ Heap Region Size: 1M
+ Heap Min Capacity: 8M
+ Heap Initial Capacity: 120M
+ Heap Max Capacity: 2G
+ Pre-touch: Disabled
+ Parallel Workers: 10
+ Concurrent Workers: 3
+ Concurrent Refinement Workers: 10
+ Periodic GC: Disabled
+
+Heap:
+ garbage-first heap   total 265216K, used 173060K [0x0000000080000000, 0x0000000100000000)
+  region size 1024K, 42 young (43008K), 8 survivors (8192K)
+ Metaspace       used 135261K, committed 136448K, reserved 1179648K
+  class space    used 17162K, committed 17664K, reserved 1048576K
+
+Heap Regions: E=young(eden), S=young(survivor), O=old, HS=humongous(starts), HC=humongous(continues), CS=collection set, F=free, OA=open archive, CA=closed archive, TAMS=top-at-mark-start, PB=parsable bottom
+|   0|0x0000000080000000, 0x0000000080100000, 0x0000000080100000|100%|HS|  |TAMS 0x0000000080000000| PB 0x0000000080000000| Complete 
+|   1|0x0000000080100000, 0x0000000080200000, 0x0000000080200000|100%|HS|  |TAMS 0x0000000080100000| PB 0x0000000080100000| Complete 
+|   2|0x0000000080200000, 0x0000000080300000, 0x0000000080300000|100%|HC|  |TAMS 0x0000000080200000| PB 0x0000000080200000| Complete 
+|   3|0x0000000080300000, 0x0000000080400000, 0x0000000080400000|100%|HS|  |TAMS 0x0000000080300000| PB 0x0000000080300000| Complete 
+|   4|0x0000000080400000, 0x0000000080500000, 0x0000000080500000|100%|HC|  |TAMS 0x0000000080400000| PB 0x0000000080400000| Complete 
+|   5|0x0000000080500000, 0x0000000080600000, 0x0000000080600000|100%|HC|  |TAMS 0x0000000080500000| PB 0x0000000080500000| Complete 
+|   6|0x0000000080600000, 0x0000000080700000, 0x0000000080700000|100%|HS|  |TAMS 0x0000000080600000| PB 0x0000000080600000| Complete 
+|   7|0x0000000080700000, 0x0000000080800000, 0x0000000080800000|100%|HS|  |TAMS 0x0000000080700000| PB 0x0000000080700000| Complete 
+|   8|0x0000000080800000, 0x0000000080900000, 0x0000000080900000|100%|HS|  |TAMS 0x0000000080800000| PB 0x0000000080800000| Complete 
+|   9|0x0000000080900000, 0x0000000080a00000, 0x0000000080a00000|100%|HS|  |TAMS 0x0000000080900000| PB 0x0000000080900000| Complete 
+|  10|0x0000000080a00000, 0x0000000080b00000, 0x0000000080b00000|100%| O|  |TAMS 0x0000000080a00000| PB 0x0000000080a00000| Untracked 
+|  11|0x0000000080b00000, 0x0000000080c00000, 0x0000000080c00000|100%| O|  |TAMS 0x0000000080b00000| PB 0x0000000080b00000| Untracked 
+|  12|0x0000000080c00000, 0x0000000080d00000, 0x0000000080d00000|100%| O|  |TAMS 0x0000000080c00000| PB 0x0000000080c00000| Untracked 
+|  13|0x0000000080d00000, 0x0000000080e00000, 0x0000000080e00000|100%| O|  |TAMS 0x0000000080d00000| PB 0x0000000080d00000| Untracked 
+|  14|0x0000000080e00000, 0x0000000080f00000, 0x0000000080f00000|100%| O|  |TAMS 0x0000000080e00000| PB 0x0000000080e00000| Untracked 
+|  15|0x0000000080f00000, 0x0000000081000000, 0x0000000081000000|100%| O|  |TAMS 0x0000000080f00000| PB 0x0000000080f00000| Untracked 
+|  16|0x0000000081000000, 0x0000000081100000, 0x0000000081100000|100%| O|  |TAMS 0x0000000081000000| PB 0x0000000081000000| Untracked 
+|  17|0x0000000081100000, 0x0000000081200000, 0x0000000081200000|100%| O|  |TAMS 0x0000000081100000| PB 0x0000000081100000| Untracked 
+|  18|0x0000000081200000, 0x0000000081300000, 0x0000000081300000|100%| O|  |TAMS 0x0000000081200000| PB 0x0000000081200000| Untracked 
+|  19|0x0000000081300000, 0x0000000081400000, 0x0000000081400000|100%| O|  |TAMS 0x0000000081300000| PB 0x0000000081300000| Untracked 
+|  20|0x0000000081400000, 0x0000000081500000, 0x0000000081500000|100%| O|  |TAMS 0x0000000081400000| PB 0x0000000081400000| Untracked 
+|  21|0x0000000081500000, 0x0000000081600000, 0x0000000081600000|100%| O|  |TAMS 0x0000000081500000| PB 0x0000000081500000| Untracked 
+|  22|0x0000000081600000, 0x0000000081700000, 0x0000000081700000|100%| O|  |TAMS 0x0000000081600000| PB 0x0000000081600000| Untracked 
+|  23|0x0000000081700000, 0x0000000081800000, 0x0000000081800000|100%| O|  |TAMS 0x0000000081700000| PB 0x0000000081700000| Untracked 
+|  24|0x0000000081800000, 0x0000000081900000, 0x0000000081900000|100%| O|  |TAMS 0x0000000081800000| PB 0x0000000081800000| Untracked 
+|  25|0x0000000081900000, 0x0000000081a00000, 0x0000000081a00000|100%|HS|  |TAMS 0x0000000081900000| PB 0x0000000081900000| Complete 
+|  26|0x0000000081a00000, 0x0000000081b00000, 0x0000000081b00000|100%|HC|  |TAMS 0x0000000081a00000| PB 0x0000000081a00000| Complete 
+|  27|0x0000000081b00000, 0x0000000081c00000, 0x0000000081c00000|100%|HC|  |TAMS 0x0000000081b00000| PB 0x0000000081b00000| Complete 
+|  28|0x0000000081c00000, 0x0000000081d00000, 0x0000000081d00000|100%|HS|  |TAMS 0x0000000081c00000| PB 0x0000000081c00000| Complete 
+|  29|0x0000000081d00000, 0x0000000081e00000, 0x0000000081e00000|100%|HC|  |TAMS 0x0000000081d00000| PB 0x0000000081d00000| Complete 
+|  30|0x0000000081e00000, 0x0000000081f00000, 0x0000000081f00000|100%| O|  |TAMS 0x0000000081e00000| PB 0x0000000081e00000| Untracked 
+|  31|0x0000000081f00000, 0x0000000082000000, 0x0000000082000000|100%| O|  |TAMS 0x0000000081f00000| PB 0x0000000081f00000| Untracked 
+|  32|0x0000000082000000, 0x0000000082100000, 0x0000000082100000|100%| O|  |TAMS 0x0000000082000000| PB 0x0000000082000000| Untracked 
+|  33|0x0000000082100000, 0x0000000082200000, 0x0000000082200000|100%| O|  |TAMS 0x0000000082100000| PB 0x0000000082100000| Untracked 
+|  34|0x0000000082200000, 0x0000000082300000, 0x0000000082300000|100%| O|  |TAMS 0x0000000082200000| PB 0x0000000082200000| Untracked 
+|  35|0x0000000082300000, 0x0000000082400000, 0x0000000082400000|100%| O|  |TAMS 0x0000000082300000| PB 0x0000000082300000| Untracked 
+|  36|0x0000000082400000, 0x0000000082500000, 0x0000000082500000|100%| O|  |TAMS 0x0000000082400000| PB 0x0000000082400000| Untracked 
+|  37|0x0000000082500000, 0x0000000082600000, 0x0000000082600000|100%| O|  |TAMS 0x0000000082500000| PB 0x0000000082500000| Untracked 
+|  38|0x0000000082600000, 0x0000000082700000, 0x0000000082700000|100%| O|  |TAMS 0x0000000082600000| PB 0x0000000082600000| Untracked 
+|  39|0x0000000082700000, 0x0000000082800000, 0x0000000082800000|100%| O|  |TAMS 0x0000000082700000| PB 0x0000000082700000| Untracked 
+|  40|0x0000000082800000, 0x0000000082900000, 0x0000000082900000|100%| O|  |TAMS 0x0000000082800000| PB 0x0000000082800000| Untracked 
+|  41|0x0000000082900000, 0x0000000082a00000, 0x0000000082a00000|100%| O|  |TAMS 0x0000000082900000| PB 0x0000000082900000| Untracked 
+|  42|0x0000000082a00000, 0x0000000082b00000, 0x0000000082b00000|100%| O|  |TAMS 0x0000000082a00000| PB 0x0000000082a00000| Untracked 
+|  43|0x0000000082b00000, 0x0000000082c00000, 0x0000000082c00000|100%| O|  |TAMS 0x0000000082b00000| PB 0x0000000082b00000| Untracked 
+|  44|0x0000000082c00000, 0x0000000082c00000, 0x0000000082d00000|  0%| F|  |TAMS 0x0000000082c00000| PB 0x0000000082c00000| Untracked 
+|  45|0x0000000082d00000, 0x0000000082e00000, 0x0000000082e00000|100%| O|  |TAMS 0x0000000082d00000| PB 0x0000000082d00000| Untracked 
+|  46|0x0000000082e00000, 0x0000000082f00000, 0x0000000082f00000|100%| O|  |TAMS 0x0000000082e00000| PB 0x0000000082e00000| Untracked 
+|  47|0x0000000082f00000, 0x0000000083000000, 0x0000000083000000|100%| O|  |TAMS 0x0000000082f00000| PB 0x0000000082f00000| Untracked 
+|  48|0x0000000083000000, 0x0000000083100000, 0x0000000083100000|100%| O|  |TAMS 0x0000000083000000| PB 0x0000000083000000| Untracked 
+|  49|0x0000000083100000, 0x0000000083200000, 0x0000000083200000|100%| O|  |TAMS 0x0000000083100000| PB 0x0000000083100000| Untracked 
+|  50|0x0000000083200000, 0x0000000083300000, 0x0000000083300000|100%| O|  |TAMS 0x0000000083200000| PB 0x0000000083200000| Untracked 
+|  51|0x0000000083300000, 0x0000000083400000, 0x0000000083400000|100%| O|  |TAMS 0x0000000083300000| PB 0x0000000083300000| Untracked 
+|  52|0x0000000083400000, 0x0000000083500000, 0x0000000083500000|100%| O|  |TAMS 0x0000000083400000| PB 0x0000000083400000| Untracked 
+|  53|0x0000000083500000, 0x0000000083600000, 0x0000000083600000|100%| O|  |TAMS 0x0000000083500000| PB 0x0000000083500000| Untracked 
+|  54|0x0000000083600000, 0x0000000083700000, 0x0000000083700000|100%| O|  |TAMS 0x0000000083600000| PB 0x0000000083600000| Untracked 
+|  55|0x0000000083700000, 0x0000000083800000, 0x0000000083800000|100%| O|  |TAMS 0x0000000083700000| PB 0x0000000083700000| Untracked 
+|  56|0x0000000083800000, 0x0000000083900000, 0x0000000083900000|100%| O|  |TAMS 0x0000000083800000| PB 0x0000000083800000| Untracked 
+|  57|0x0000000083900000, 0x0000000083a00000, 0x0000000083a00000|100%| O|  |TAMS 0x0000000083900000| PB 0x0000000083900000| Untracked 
+|  58|0x0000000083a00000, 0x0000000083b00000, 0x0000000083b00000|100%| O|  |TAMS 0x0000000083a00000| PB 0x0000000083a00000| Untracked 
+|  59|0x0000000083b00000, 0x0000000083c00000, 0x0000000083c00000|100%| O|  |TAMS 0x0000000083b00000| PB 0x0000000083b00000| Untracked 
+|  60|0x0000000083c00000, 0x0000000083d00000, 0x0000000083d00000|100%| O|  |TAMS 0x0000000083c00000| PB 0x0000000083c00000| Complete 
+|  61|0x0000000083d00000, 0x0000000083e00000, 0x0000000083e00000|100%| O|  |TAMS 0x0000000083d00000| PB 0x0000000083d00000| Untracked 
+|  62|0x0000000083e00000, 0x0000000083f00000, 0x0000000083f00000|100%| O|  |TAMS 0x0000000083e00000| PB 0x0000000083e00000| Untracked 
+|  63|0x0000000083f00000, 0x0000000084000000, 0x0000000084000000|100%| O|  |TAMS 0x0000000083f00000| PB 0x0000000083f00000| Untracked 
+|  64|0x0000000084000000, 0x0000000084100000, 0x0000000084100000|100%| O|  |TAMS 0x0000000084000000| PB 0x0000000084000000| Untracked 
+|  65|0x0000000084100000, 0x0000000084200000, 0x0000000084200000|100%|HS|  |TAMS 0x0000000084100000| PB 0x0000000084100000| Complete 
+|  66|0x0000000084200000, 0x0000000084300000, 0x0000000084300000|100%|HC|  |TAMS 0x0000000084200000| PB 0x0000000084200000| Complete 
+|  67|0x0000000084300000, 0x0000000084400000, 0x0000000084400000|100%|HC|  |TAMS 0x0000000084300000| PB 0x0000000084300000| Complete 
+|  68|0x0000000084400000, 0x0000000084500000, 0x0000000084500000|100%|HC|  |TAMS 0x0000000084400000| PB 0x0000000084400000| Complete 
+|  69|0x0000000084500000, 0x0000000084600000, 0x0000000084600000|100%|HS|  |TAMS 0x0000000084500000| PB 0x0000000084500000| Complete 
+|  70|0x0000000084600000, 0x0000000084700000, 0x0000000084700000|100%|HC|  |TAMS 0x0000000084600000| PB 0x0000000084600000| Complete 
+|  71|0x0000000084700000, 0x0000000084800000, 0x0000000084800000|100%| O|  |TAMS 0x0000000084700000| PB 0x0000000084700000| Untracked 
+|  72|0x0000000084800000, 0x0000000084900000, 0x0000000084900000|100%| O|  |TAMS 0x0000000084800000| PB 0x0000000084800000| Untracked 
+|  73|0x0000000084900000, 0x0000000084a00000, 0x0000000084a00000|100%|HS|  |TAMS 0x0000000084900000| PB 0x0000000084900000| Complete 
+|  74|0x0000000084a00000, 0x0000000084b00000, 0x0000000084b00000|100%|HC|  |TAMS 0x0000000084a00000| PB 0x0000000084a00000| Complete 
+|  75|0x0000000084b00000, 0x0000000084c00000, 0x0000000084c00000|100%|HS|  |TAMS 0x0000000084b00000| PB 0x0000000084b00000| Complete 
+|  76|0x0000000084c00000, 0x0000000084d00000, 0x0000000084d00000|100%|HC|  |TAMS 0x0000000084c00000| PB 0x0000000084c00000| Complete 
+|  77|0x0000000084d00000, 0x0000000084d00000, 0x0000000084e00000|  0%| F|  |TAMS 0x0000000084d00000| PB 0x0000000084d00000| Untracked 
+|  78|0x0000000084e00000, 0x0000000084f00000, 0x0000000084f00000|100%| O|  |TAMS 0x0000000084e00000| PB 0x0000000084e00000| Untracked 
+|  79|0x0000000084f00000, 0x0000000085000000, 0x0000000085000000|100%| O|  |TAMS 0x0000000084f00000| PB 0x0000000084f00000| Untracked 
+|  80|0x0000000085000000, 0x0000000085100000, 0x0000000085100000|100%| O|  |TAMS 0x0000000085000000| PB 0x0000000085000000| Complete 
+|  81|0x0000000085100000, 0x0000000085200000, 0x0000000085200000|100%|HS|  |TAMS 0x0000000085100000| PB 0x0000000085100000| Complete 
+|  82|0x0000000085200000, 0x0000000085300000, 0x0000000085300000|100%|HC|  |TAMS 0x0000000085200000| PB 0x0000000085200000| Complete 
+|  83|0x0000000085300000, 0x0000000085400000, 0x0000000085400000|100%|HC|  |TAMS 0x0000000085300000| PB 0x0000000085300000| Complete 
+|  84|0x0000000085400000, 0x0000000085500000, 0x0000000085500000|100%|HS|  |TAMS 0x0000000085400000| PB 0x0000000085400000| Complete 
+|  85|0x0000000085500000, 0x0000000085600000, 0x0000000085600000|100%|HC|  |TAMS 0x0000000085500000| PB 0x0000000085500000| Complete 
+|  86|0x0000000085600000, 0x0000000085700000, 0x0000000085700000|100%|HS|  |TAMS 0x0000000085600000| PB 0x0000000085600000| Complete 
+|  87|0x0000000085700000, 0x0000000085800000, 0x0000000085800000|100%|HC|  |TAMS 0x0000000085700000| PB 0x0000000085700000| Complete 
+|  88|0x0000000085800000, 0x0000000085800000, 0x0000000085900000|  0%| F|  |TAMS 0x0000000085800000| PB 0x0000000085800000| Untracked 
+|  89|0x0000000085900000, 0x0000000085900000, 0x0000000085a00000|  0%| F|  |TAMS 0x0000000085900000| PB 0x0000000085900000| Untracked 
+|  90|0x0000000085a00000, 0x0000000085a00000, 0x0000000085b00000|  0%| F|  |TAMS 0x0000000085a00000| PB 0x0000000085a00000| Untracked 
+|  91|0x0000000085b00000, 0x0000000085c00000, 0x0000000085c00000|100%| O|  |TAMS 0x0000000085b00000| PB 0x0000000085b00000| Untracked 
+|  92|0x0000000085c00000, 0x0000000085d00000, 0x0000000085d00000|100%| O|  |TAMS 0x0000000085c00000| PB 0x0000000085c00000| Untracked 
+|  93|0x0000000085d00000, 0x0000000085e00000, 0x0000000085e00000|100%|HS|  |TAMS 0x0000000085d00000| PB 0x0000000085d00000| Complete 
+|  94|0x0000000085e00000, 0x0000000085f00000, 0x0000000085f00000|100%|HC|  |TAMS 0x0000000085e00000| PB 0x0000000085e00000| Complete 
+|  95|0x0000000085f00000, 0x0000000086000000, 0x0000000086000000|100%|HC|  |TAMS 0x0000000085f00000| PB 0x0000000085f00000| Complete 
+|  96|0x0000000086000000, 0x0000000086100000, 0x0000000086100000|100%|HC|  |TAMS 0x0000000086000000| PB 0x0000000086000000| Complete 
+|  97|0x0000000086100000, 0x0000000086200000, 0x0000000086200000|100%|HS|  |TAMS 0x0000000086100000| PB 0x0000000086100000| Complete 
+|  98|0x0000000086200000, 0x0000000086300000, 0x0000000086300000|100%|HC|  |TAMS 0x0000000086200000| PB 0x0000000086200000| Complete 
+|  99|0x0000000086300000, 0x0000000086400000, 0x0000000086400000|100%|HC|  |TAMS 0x0000000086300000| PB 0x0000000086300000| Complete 
+| 100|0x0000000086400000, 0x0000000086500000, 0x0000000086500000|100%|HC|  |TAMS 0x0000000086400000| PB 0x0000000086400000| Complete 
+| 101|0x0000000086500000, 0x0000000086600000, 0x0000000086600000|100%|HS|  |TAMS 0x0000000086500000| PB 0x0000000086500000| Complete 
+| 102|0x0000000086600000, 0x0000000086700000, 0x0000000086700000|100%|HC|  |TAMS 0x0000000086600000| PB 0x0000000086600000| Complete 
+| 103|0x0000000086700000, 0x0000000086800000, 0x0000000086800000|100%|HC|  |TAMS 0x0000000086700000| PB 0x0000000086700000| Complete 
+| 104|0x0000000086800000, 0x0000000086900000, 0x0000000086900000|100%|HC|  |TAMS 0x0000000086800000| PB 0x0000000086800000| Complete 
+| 105|0x0000000086900000, 0x0000000086a00000, 0x0000000086a00000|100%|HS|  |TAMS 0x0000000086900000| PB 0x0000000086900000| Complete 
+| 106|0x0000000086a00000, 0x0000000086b00000, 0x0000000086b00000|100%|HC|  |TAMS 0x0000000086a00000| PB 0x0000000086a00000| Complete 
+| 107|0x0000000086b00000, 0x0000000086c00000, 0x0000000086c00000|100%|HC|  |TAMS 0x0000000086b00000| PB 0x0000000086b00000| Complete 
+| 108|0x0000000086c00000, 0x0000000086d00000, 0x0000000086d00000|100%|HC|  |TAMS 0x0000000086c00000| PB 0x0000000086c00000| Complete 
+| 109|0x0000000086d00000, 0x0000000086e00000, 0x0000000086e00000|100%|HS|  |TAMS 0x0000000086d00000| PB 0x0000000086d00000| Complete 
+| 110|0x0000000086e00000, 0x0000000086f00000, 0x0000000086f00000|100%|HC|  |TAMS 0x0000000086e00000| PB 0x0000000086e00000| Complete 
+| 111|0x0000000086f00000, 0x0000000087000000, 0x0000000087000000|100%|HC|  |TAMS 0x0000000086f00000| PB 0x0000000086f00000| Complete 
+| 112|0x0000000087000000, 0x0000000087100000, 0x0000000087100000|100%|HC|  |TAMS 0x0000000087000000| PB 0x0000000087000000| Complete 
+| 113|0x0000000087100000, 0x0000000087200000, 0x0000000087200000|100%|HS|  |TAMS 0x0000000087100000| PB 0x0000000087100000| Complete 
+| 114|0x0000000087200000, 0x0000000087300000, 0x0000000087300000|100%|HC|  |TAMS 0x0000000087200000| PB 0x0000000087200000| Complete 
+| 115|0x0000000087300000, 0x0000000087400000, 0x0000000087400000|100%|HC|  |TAMS 0x0000000087300000| PB 0x0000000087300000| Complete 
+| 116|0x0000000087400000, 0x0000000087500000, 0x0000000087500000|100%|HC|  |TAMS 0x0000000087400000| PB 0x0000000087400000| Complete 
+| 117|0x0000000087500000, 0x0000000087600000, 0x0000000087600000|100%|HS|  |TAMS 0x0000000087500000| PB 0x0000000087500000| Complete 
+| 118|0x0000000087600000, 0x0000000087700000, 0x0000000087700000|100%|HC|  |TAMS 0x0000000087600000| PB 0x0000000087600000| Complete 
+| 119|0x0000000087700000, 0x0000000087800000, 0x0000000087800000|100%|HC|  |TAMS 0x0000000087700000| PB 0x0000000087700000| Complete 
+| 120|0x0000000087800000, 0x0000000087900000, 0x0000000087900000|100%|HC|  |TAMS 0x0000000087800000| PB 0x0000000087800000| Complete 
+| 121|0x0000000087900000, 0x0000000087a00000, 0x0000000087a00000|100%|HS|  |TAMS 0x0000000087900000| PB 0x0000000087900000| Complete 
+| 122|0x0000000087a00000, 0x0000000087b00000, 0x0000000087b00000|100%|HC|  |TAMS 0x0000000087a00000| PB 0x0000000087a00000| Complete 
+| 123|0x0000000087b00000, 0x0000000087c00000, 0x0000000087c00000|100%|HC|  |TAMS 0x0000000087b00000| PB 0x0000000087b00000| Complete 
+| 124|0x0000000087c00000, 0x0000000087d00000, 0x0000000087d00000|100%|HC|  |TAMS 0x0000000087c00000| PB 0x0000000087c00000| Complete 
+| 125|0x0000000087d00000, 0x0000000087e00000, 0x0000000087e00000|100%|HC|  |TAMS 0x0000000087d00000| PB 0x0000000087d00000| Complete 
+| 126|0x0000000087e00000, 0x0000000087e00000, 0x0000000087f00000|  0%| F|  |TAMS 0x0000000087e00000| PB 0x0000000087e00000| Untracked 
+| 127|0x0000000087f00000, 0x0000000087f00000, 0x0000000088000000|  0%| F|  |TAMS 0x0000000087f00000| PB 0x0000000087f00000| Untracked 
+| 128|0x0000000088000000, 0x0000000088000000, 0x0000000088100000|  0%| F|  |TAMS 0x0000000088000000| PB 0x0000000088000000| Untracked 
+| 129|0x0000000088100000, 0x0000000088200000, 0x0000000088200000|100%| O|  |TAMS 0x0000000088100000| PB 0x0000000088100000| Complete 
+| 130|0x0000000088200000, 0x0000000088300000, 0x0000000088300000|100%| O|  |TAMS 0x0000000088200000| PB 0x0000000088200000| Untracked 
+| 131|0x0000000088300000, 0x0000000088300000, 0x0000000088400000|  0%| F|  |TAMS 0x0000000088300000| PB 0x0000000088300000| Untracked 
+| 132|0x0000000088400000, 0x0000000088400000, 0x0000000088500000|  0%| F|  |TAMS 0x0000000088400000| PB 0x0000000088400000| Untracked 
+| 133|0x0000000088500000, 0x0000000088500000, 0x0000000088600000|  0%| F|  |TAMS 0x0000000088500000| PB 0x0000000088500000| Untracked 
+| 134|0x0000000088600000, 0x0000000088600000, 0x0000000088700000|  0%| F|  |TAMS 0x0000000088600000| PB 0x0000000088600000| Untracked 
+| 135|0x0000000088700000, 0x0000000088700000, 0x0000000088800000|  0%| F|  |TAMS 0x0000000088700000| PB 0x0000000088700000| Untracked 
+| 136|0x0000000088800000, 0x0000000088800000, 0x0000000088900000|  0%| F|  |TAMS 0x0000000088800000| PB 0x0000000088800000| Untracked 
+| 137|0x0000000088900000, 0x0000000088900000, 0x0000000088a00000|  0%| F|  |TAMS 0x0000000088900000| PB 0x0000000088900000| Untracked 
+| 138|0x0000000088a00000, 0x0000000088b00000, 0x0000000088b00000|100%| O|  |TAMS 0x0000000088a00000| PB 0x0000000088a00000| Untracked 
+| 139|0x0000000088b00000, 0x0000000088b00000, 0x0000000088c00000|  0%| F|  |TAMS 0x0000000088b00000| PB 0x0000000088b00000| Untracked 
+| 140|0x0000000088c00000, 0x0000000088c00000, 0x0000000088d00000|  0%| F|  |TAMS 0x0000000088c00000| PB 0x0000000088c00000| Untracked 
+| 141|0x0000000088d00000, 0x0000000088d00000, 0x0000000088e00000|  0%| F|  |TAMS 0x0000000088d00000| PB 0x0000000088d00000| Untracked 
+| 142|0x0000000088e00000, 0x0000000088e00000, 0x0000000088f00000|  0%| F|  |TAMS 0x0000000088e00000| PB 0x0000000088e00000| Untracked 
+| 143|0x0000000088f00000, 0x0000000088f00000, 0x0000000089000000|  0%| F|  |TAMS 0x0000000088f00000| PB 0x0000000088f00000| Untracked 
+| 144|0x0000000089000000, 0x0000000089000000, 0x0000000089100000|  0%| F|  |TAMS 0x0000000089000000| PB 0x0000000089000000| Untracked 
+| 145|0x0000000089100000, 0x0000000089100000, 0x0000000089200000|  0%| F|  |TAMS 0x0000000089100000| PB 0x0000000089100000| Untracked 
+| 146|0x0000000089200000, 0x0000000089200000, 0x0000000089300000|  0%| F|  |TAMS 0x0000000089200000| PB 0x0000000089200000| Untracked 
+| 147|0x0000000089300000, 0x0000000089300000, 0x0000000089400000|  0%| F|  |TAMS 0x0000000089300000| PB 0x0000000089300000| Untracked 
+| 148|0x0000000089400000, 0x0000000089400000, 0x0000000089500000|  0%| F|  |TAMS 0x0000000089400000| PB 0x0000000089400000| Untracked 
+| 149|0x0000000089500000, 0x0000000089500000, 0x0000000089600000|  0%| F|  |TAMS 0x0000000089500000| PB 0x0000000089500000| Untracked 
+| 150|0x0000000089600000, 0x0000000089600000, 0x0000000089700000|  0%| F|  |TAMS 0x0000000089600000| PB 0x0000000089600000| Untracked 
+| 151|0x0000000089700000, 0x0000000089700000, 0x0000000089800000|  0%| F|  |TAMS 0x0000000089700000| PB 0x0000000089700000| Untracked 
+| 152|0x0000000089800000, 0x0000000089800000, 0x0000000089900000|  0%| F|  |TAMS 0x0000000089800000| PB 0x0000000089800000| Untracked 
+| 153|0x0000000089900000, 0x0000000089900000, 0x0000000089a00000|  0%| F|  |TAMS 0x0000000089900000| PB 0x0000000089900000| Untracked 
+| 154|0x0000000089a00000, 0x0000000089a00000, 0x0000000089b00000|  0%| F|  |TAMS 0x0000000089a00000| PB 0x0000000089a00000| Untracked 
+| 155|0x0000000089b00000, 0x0000000089b00000, 0x0000000089c00000|  0%| F|  |TAMS 0x0000000089b00000| PB 0x0000000089b00000| Untracked 
+| 156|0x0000000089c00000, 0x0000000089c00000, 0x0000000089d00000|  0%| F|  |TAMS 0x0000000089c00000| PB 0x0000000089c00000| Untracked 
+| 157|0x0000000089d00000, 0x0000000089d00000, 0x0000000089e00000|  0%| F|  |TAMS 0x0000000089d00000| PB 0x0000000089d00000| Untracked 
+| 158|0x0000000089e00000, 0x0000000089e00000, 0x0000000089f00000|  0%| F|  |TAMS 0x0000000089e00000| PB 0x0000000089e00000| Untracked 
+| 159|0x0000000089f00000, 0x0000000089f00000, 0x000000008a000000|  0%| F|  |TAMS 0x0000000089f00000| PB 0x0000000089f00000| Untracked 
+| 160|0x000000008a000000, 0x000000008a000000, 0x000000008a100000|  0%| F|  |TAMS 0x000000008a000000| PB 0x000000008a000000| Untracked 
+| 161|0x000000008a100000, 0x000000008a100000, 0x000000008a200000|  0%| F|  |TAMS 0x000000008a100000| PB 0x000000008a100000| Untracked 
+| 162|0x000000008a200000, 0x000000008a200000, 0x000000008a300000|  0%| F|  |TAMS 0x000000008a200000| PB 0x000000008a200000| Untracked 
+| 163|0x000000008a300000, 0x000000008a300000, 0x000000008a400000|  0%| F|  |TAMS 0x000000008a300000| PB 0x000000008a300000| Untracked 
+| 164|0x000000008a400000, 0x000000008a400000, 0x000000008a500000|  0%| F|  |TAMS 0x000000008a400000| PB 0x000000008a400000| Untracked 
+| 165|0x000000008a500000, 0x000000008a500000, 0x000000008a600000|  0%| F|  |TAMS 0x000000008a500000| PB 0x000000008a500000| Untracked 
+| 166|0x000000008a600000, 0x000000008a600000, 0x000000008a700000|  0%| F|  |TAMS 0x000000008a600000| PB 0x000000008a600000| Untracked 
+| 167|0x000000008a700000, 0x000000008a700000, 0x000000008a800000|  0%| F|  |TAMS 0x000000008a700000| PB 0x000000008a700000| Untracked 
+| 168|0x000000008a800000, 0x000000008a800000, 0x000000008a900000|  0%| F|  |TAMS 0x000000008a800000| PB 0x000000008a800000| Untracked 
+| 169|0x000000008a900000, 0x000000008a900000, 0x000000008aa00000|  0%| F|  |TAMS 0x000000008a900000| PB 0x000000008a900000| Untracked 
+| 170|0x000000008aa00000, 0x000000008aa00000, 0x000000008ab00000|  0%| F|  |TAMS 0x000000008aa00000| PB 0x000000008aa00000| Untracked 
+| 171|0x000000008ab00000, 0x000000008ab00000, 0x000000008ac00000|  0%| F|  |TAMS 0x000000008ab00000| PB 0x000000008ab00000| Untracked 
+| 172|0x000000008ac00000, 0x000000008ac00000, 0x000000008ad00000|  0%| F|  |TAMS 0x000000008ac00000| PB 0x000000008ac00000| Untracked 
+| 173|0x000000008ad00000, 0x000000008ad00000, 0x000000008ae00000|  0%| F|  |TAMS 0x000000008ad00000| PB 0x000000008ad00000| Untracked 
+| 174|0x000000008ae00000, 0x000000008ae00000, 0x000000008af00000|  0%| F|  |TAMS 0x000000008ae00000| PB 0x000000008ae00000| Untracked 
+| 175|0x000000008af00000, 0x000000008af00000, 0x000000008b000000|  0%| F|  |TAMS 0x000000008af00000| PB 0x000000008af00000| Untracked 
+| 176|0x000000008b000000, 0x000000008b000000, 0x000000008b100000|  0%| F|  |TAMS 0x000000008b000000| PB 0x000000008b000000| Untracked 
+| 177|0x000000008b100000, 0x000000008b100000, 0x000000008b200000|  0%| F|  |TAMS 0x000000008b100000| PB 0x000000008b100000| Untracked 
+| 178|0x000000008b200000, 0x000000008b200000, 0x000000008b300000|  0%| F|  |TAMS 0x000000008b200000| PB 0x000000008b200000| Untracked 
+| 179|0x000000008b300000, 0x000000008b300000, 0x000000008b400000|  0%| F|  |TAMS 0x000000008b300000| PB 0x000000008b300000| Untracked 
+| 180|0x000000008b400000, 0x000000008b400000, 0x000000008b500000|  0%| F|  |TAMS 0x000000008b400000| PB 0x000000008b400000| Untracked 
+| 181|0x000000008b500000, 0x000000008b500000, 0x000000008b600000|  0%| F|  |TAMS 0x000000008b500000| PB 0x000000008b500000| Untracked 
+| 182|0x000000008b600000, 0x000000008b600000, 0x000000008b700000|  0%| F|  |TAMS 0x000000008b600000| PB 0x000000008b600000| Untracked 
+| 183|0x000000008b700000, 0x000000008b700000, 0x000000008b800000|  0%| F|  |TAMS 0x000000008b700000| PB 0x000000008b700000| Untracked 
+| 184|0x000000008b800000, 0x000000008b800000, 0x000000008b900000|  0%| F|  |TAMS 0x000000008b800000| PB 0x000000008b800000| Untracked 
+| 185|0x000000008b900000, 0x000000008b900000, 0x000000008ba00000|  0%| F|  |TAMS 0x000000008b900000| PB 0x000000008b900000| Untracked 
+| 186|0x000000008ba00000, 0x000000008ba00000, 0x000000008bb00000|  0%| F|  |TAMS 0x000000008ba00000| PB 0x000000008ba00000| Untracked 
+| 187|0x000000008bb00000, 0x000000008bb00000, 0x000000008bc00000|  0%| F|  |TAMS 0x000000008bb00000| PB 0x000000008bb00000| Untracked 
+| 188|0x000000008bc00000, 0x000000008bc00000, 0x000000008bd00000|  0%| F|  |TAMS 0x000000008bc00000| PB 0x000000008bc00000| Untracked 
+| 189|0x000000008bd00000, 0x000000008bd00000, 0x000000008be00000|  0%| F|  |TAMS 0x000000008bd00000| PB 0x000000008bd00000| Untracked 
+| 190|0x000000008be00000, 0x000000008be00000, 0x000000008bf00000|  0%| F|  |TAMS 0x000000008be00000| PB 0x000000008be00000| Untracked 
+| 191|0x000000008bf00000, 0x000000008bf00000, 0x000000008c000000|  0%| F|  |TAMS 0x000000008bf00000| PB 0x000000008bf00000| Untracked 
+| 192|0x000000008c000000, 0x000000008c000000, 0x000000008c100000|  0%| F|  |TAMS 0x000000008c000000| PB 0x000000008c000000| Untracked 
+| 193|0x000000008c100000, 0x000000008c100000, 0x000000008c200000|  0%| F|  |TAMS 0x000000008c100000| PB 0x000000008c100000| Untracked 
+| 194|0x000000008c200000, 0x000000008c200000, 0x000000008c300000|  0%| F|  |TAMS 0x000000008c200000| PB 0x000000008c200000| Untracked 
+| 195|0x000000008c300000, 0x000000008c300000, 0x000000008c400000|  0%| F|  |TAMS 0x000000008c300000| PB 0x000000008c300000| Untracked 
+| 196|0x000000008c400000, 0x000000008c400000, 0x000000008c500000|  0%| F|  |TAMS 0x000000008c400000| PB 0x000000008c400000| Untracked 
+| 197|0x000000008c500000, 0x000000008c500000, 0x000000008c600000|  0%| F|  |TAMS 0x000000008c500000| PB 0x000000008c500000| Untracked 
+| 198|0x000000008c600000, 0x000000008c600000, 0x000000008c700000|  0%| F|  |TAMS 0x000000008c600000| PB 0x000000008c600000| Untracked 
+| 199|0x000000008c700000, 0x000000008c700000, 0x000000008c800000|  0%| F|  |TAMS 0x000000008c700000| PB 0x000000008c700000| Untracked 
+| 200|0x000000008c800000, 0x000000008c800000, 0x000000008c900000|  0%| F|  |TAMS 0x000000008c800000| PB 0x000000008c800000| Untracked 
+| 201|0x000000008c900000, 0x000000008c900000, 0x000000008ca00000|  0%| F|  |TAMS 0x000000008c900000| PB 0x000000008c900000| Untracked 
+| 202|0x000000008ca00000, 0x000000008ca00000, 0x000000008cb00000|  0%| F|  |TAMS 0x000000008ca00000| PB 0x000000008ca00000| Untracked 
+| 203|0x000000008cb00000, 0x000000008cb00000, 0x000000008cc00000|  0%| F|  |TAMS 0x000000008cb00000| PB 0x000000008cb00000| Untracked 
+| 204|0x000000008cc00000, 0x000000008cc00000, 0x000000008cd00000|  0%| F|  |TAMS 0x000000008cc00000| PB 0x000000008cc00000| Untracked 
+| 205|0x000000008cd00000, 0x000000008cd00000, 0x000000008ce00000|  0%| F|  |TAMS 0x000000008cd00000| PB 0x000000008cd00000| Untracked 
+| 206|0x000000008ce00000, 0x000000008ce00000, 0x000000008cf00000|  0%| F|  |TAMS 0x000000008ce00000| PB 0x000000008ce00000| Untracked 
+| 207|0x000000008cf00000, 0x000000008cf00000, 0x000000008d000000|  0%| F|  |TAMS 0x000000008cf00000| PB 0x000000008cf00000| Untracked 
+| 208|0x000000008d000000, 0x000000008d000000, 0x000000008d100000|  0%| F|  |TAMS 0x000000008d000000| PB 0x000000008d000000| Untracked 
+| 209|0x000000008d100000, 0x000000008d100000, 0x000000008d200000|  0%| F|  |TAMS 0x000000008d100000| PB 0x000000008d100000| Untracked 
+| 210|0x000000008d200000, 0x000000008d200000, 0x000000008d300000|  0%| F|  |TAMS 0x000000008d200000| PB 0x000000008d200000| Untracked 
+| 211|0x000000008d300000, 0x000000008d300000, 0x000000008d400000|  0%| F|  |TAMS 0x000000008d300000| PB 0x000000008d300000| Untracked 
+| 212|0x000000008d400000, 0x000000008d4b1f70, 0x000000008d500000| 69%| E|  |TAMS 0x000000008d400000| PB 0x000000008d400000| Complete 
+| 213|0x000000008d500000, 0x000000008d600000, 0x000000008d600000|100%| E|CS|TAMS 0x000000008d500000| PB 0x000000008d500000| Complete 
+| 214|0x000000008d600000, 0x000000008d700000, 0x000000008d700000|100%| E|CS|TAMS 0x000000008d600000| PB 0x000000008d600000| Complete 
+| 215|0x000000008d700000, 0x000000008d800000, 0x000000008d800000|100%| E|CS|TAMS 0x000000008d700000| PB 0x000000008d700000| Complete 
+| 216|0x000000008d800000, 0x000000008d900000, 0x000000008d900000|100%| E|CS|TAMS 0x000000008d800000| PB 0x000000008d800000| Complete 
+| 217|0x000000008d900000, 0x000000008da00000, 0x000000008da00000|100%| E|CS|TAMS 0x000000008d900000| PB 0x000000008d900000| Complete 
+| 218|0x000000008da00000, 0x000000008db00000, 0x000000008db00000|100%| E|CS|TAMS 0x000000008da00000| PB 0x000000008da00000| Complete 
+| 219|0x000000008db00000, 0x000000008dc00000, 0x000000008dc00000|100%| E|CS|TAMS 0x000000008db00000| PB 0x000000008db00000| Complete 
+| 220|0x000000008dc00000, 0x000000008dd00000, 0x000000008dd00000|100%| E|CS|TAMS 0x000000008dc00000| PB 0x000000008dc00000| Complete 
+| 221|0x000000008dd00000, 0x000000008de00000, 0x000000008de00000|100%| E|CS|TAMS 0x000000008dd00000| PB 0x000000008dd00000| Complete 
+| 222|0x000000008de00000, 0x000000008df00000, 0x000000008df00000|100%| E|CS|TAMS 0x000000008de00000| PB 0x000000008de00000| Complete 
+| 223|0x000000008df00000, 0x000000008e000000, 0x000000008e000000|100%| E|CS|TAMS 0x000000008df00000| PB 0x000000008df00000| Complete 
+| 224|0x000000008e000000, 0x000000008e100000, 0x000000008e100000|100%| E|CS|TAMS 0x000000008e000000| PB 0x000000008e000000| Complete 
+| 225|0x000000008e100000, 0x000000008e200000, 0x000000008e200000|100%| E|CS|TAMS 0x000000008e100000| PB 0x000000008e100000| Complete 
+| 226|0x000000008e200000, 0x000000008e300000, 0x000000008e300000|100%| E|CS|TAMS 0x000000008e200000| PB 0x000000008e200000| Complete 
+| 227|0x000000008e300000, 0x000000008e400000, 0x000000008e400000|100%| E|CS|TAMS 0x000000008e300000| PB 0x000000008e300000| Complete 
+| 228|0x000000008e400000, 0x000000008e500000, 0x000000008e500000|100%| E|CS|TAMS 0x000000008e400000| PB 0x000000008e400000| Complete 
+| 229|0x000000008e500000, 0x000000008e600000, 0x000000008e600000|100%| E|CS|TAMS 0x000000008e500000| PB 0x000000008e500000| Complete 
+| 230|0x000000008e600000, 0x000000008e700000, 0x000000008e700000|100%| E|CS|TAMS 0x000000008e600000| PB 0x000000008e600000| Complete 
+| 231|0x000000008e700000, 0x000000008e800000, 0x000000008e800000|100%| E|CS|TAMS 0x000000008e700000| PB 0x000000008e700000| Complete 
+| 232|0x000000008e800000, 0x000000008e900000, 0x000000008e900000|100%| E|CS|TAMS 0x000000008e800000| PB 0x000000008e800000| Complete 
+| 233|0x000000008e900000, 0x000000008ea00000, 0x000000008ea00000|100%| E|CS|TAMS 0x000000008e900000| PB 0x000000008e900000| Complete 
+| 234|0x000000008ea00000, 0x000000008ea1ce38, 0x000000008eb00000| 11%| S|CS|TAMS 0x000000008ea00000| PB 0x000000008ea00000| Complete 
+| 235|0x000000008eb00000, 0x000000008ec00000, 0x000000008ec00000|100%| S|CS|TAMS 0x000000008eb00000| PB 0x000000008eb00000| Complete 
+| 236|0x000000008ec00000, 0x000000008ed00000, 0x000000008ed00000|100%| S|CS|TAMS 0x000000008ec00000| PB 0x000000008ec00000| Complete 
+| 237|0x000000008ed00000, 0x000000008ee00000, 0x000000008ee00000|100%| S|CS|TAMS 0x000000008ed00000| PB 0x000000008ed00000| Complete 
+| 238|0x000000008ee00000, 0x000000008ef00000, 0x000000008ef00000|100%| S|CS|TAMS 0x000000008ee00000| PB 0x000000008ee00000| Complete 
+| 239|0x000000008ef00000, 0x000000008f000000, 0x000000008f000000|100%| S|CS|TAMS 0x000000008ef00000| PB 0x000000008ef00000| Complete 
+| 240|0x000000008f000000, 0x000000008f100000, 0x000000008f100000|100%| S|CS|TAMS 0x000000008f000000| PB 0x000000008f000000| Complete 
+| 241|0x000000008f100000, 0x000000008f200000, 0x000000008f200000|100%| S|CS|TAMS 0x000000008f100000| PB 0x000000008f100000| Complete 
+| 242|0x000000008f200000, 0x000000008f300000, 0x000000008f300000|100%| E|CS|TAMS 0x000000008f200000| PB 0x000000008f200000| Complete 
+| 243|0x000000008f300000, 0x000000008f400000, 0x000000008f400000|100%| E|CS|TAMS 0x000000008f300000| PB 0x000000008f300000| Complete 
+| 244|0x000000008f400000, 0x000000008f500000, 0x000000008f500000|100%| E|CS|TAMS 0x000000008f400000| PB 0x000000008f400000| Complete 
+| 245|0x000000008f500000, 0x000000008f600000, 0x000000008f600000|100%| E|CS|TAMS 0x000000008f500000| PB 0x000000008f500000| Complete 
+| 246|0x000000008f600000, 0x000000008f700000, 0x000000008f700000|100%| E|CS|TAMS 0x000000008f600000| PB 0x000000008f600000| Complete 
+| 247|0x000000008f700000, 0x000000008f800000, 0x000000008f800000|100%|HS|  |TAMS 0x000000008f700000| PB 0x000000008f700000| Complete 
+| 248|0x000000008f800000, 0x000000008f900000, 0x000000008f900000|100%|HC|  |TAMS 0x000000008f800000| PB 0x000000008f800000| Complete 
+| 249|0x000000008f900000, 0x000000008fa00000, 0x000000008fa00000|100%| E|CS|TAMS 0x000000008f900000| PB 0x000000008f900000| Complete 
+| 250|0x000000008fa00000, 0x000000008fb00000, 0x000000008fb00000|100%| E|CS|TAMS 0x000000008fa00000| PB 0x000000008fa00000| Complete 
+| 251|0x000000008fb00000, 0x000000008fc00000, 0x000000008fc00000|100%| E|CS|TAMS 0x000000008fb00000| PB 0x000000008fb00000| Complete 
+| 252|0x000000008fc00000, 0x000000008fd00000, 0x000000008fd00000|100%| E|CS|TAMS 0x000000008fc00000| PB 0x000000008fc00000| Complete 
+| 253|0x000000008fd00000, 0x000000008fe00000, 0x000000008fe00000|100%| E|CS|TAMS 0x000000008fd00000| PB 0x000000008fd00000| Complete 
+| 254|0x000000008fe00000, 0x000000008ff00000, 0x000000008ff00000|100%| E|CS|TAMS 0x000000008fe00000| PB 0x000000008fe00000| Complete 
+| 255|0x000000008ff00000, 0x0000000090000000, 0x0000000090000000|100%| E|CS|TAMS 0x000000008ff00000| PB 0x000000008ff00000| Complete 
+|2045|0x00000000ffd00000, 0x00000000ffde4200, 0x00000000ffe00000| 89%| O|  |TAMS 0x00000000ffd00000| PB 0x00000000ffd00000| Untracked 
+|2046|0x00000000ffe00000, 0x00000000fff00000, 0x00000000fff00000|100%| O|  |TAMS 0x00000000ffe00000| PB 0x00000000ffe00000| Untracked 
+|2047|0x00000000fff00000, 0x0000000100000000, 0x0000000100000000|100%| O|  |TAMS 0x00000000fff00000| PB 0x00000000fff00000| Untracked 
+
+Card table byte_map: [0x0000023b7ef80000,0x0000023b7f380000] _byte_map_base: 0x0000023b7eb80000
+
+Marking Bits: (CMBitMap*) 0x0000023b746cdd60
+ Bits: [0x0000023b0f000000, 0x0000023b11000000)
+
+Polling page: 0x0000023b74710000
+
+Metaspace:
+
+Usage:
+  Non-class:    115.33 MB used.
+      Class:     16.76 MB used.
+       Both:    132.09 MB used.
+
+Virtual space:
+  Non-class space:      128.00 MB reserved,     116.00 MB ( 91%) committed,  2 nodes.
+      Class space:        1.00 GB reserved,      17.25 MB (  2%) committed,  1 nodes.
+             Both:        1.12 GB reserved,     133.25 MB ( 12%) committed. 
+
+Chunk freelists:
+   Non-Class:  3.68 MB
+       Class:  2.59 MB
+        Both:  6.28 MB
+
+MaxMetaspaceSize: unlimited
+CompressedClassSpaceSize: 1.00 GB
+Initial GC threshold: 21.00 MB
+Current GC threshold: 222.00 MB
+CDS: on
+MetaspaceReclaimPolicy: balanced
+ - commit_granule_bytes: 65536.
+ - commit_granule_words: 8192.
+ - virtual_space_node_default_size: 8388608.
+ - enlarge_chunks_in_place: 1.
+ - new_chunks_are_fully_committed: 0.
+ - uncommit_free_chunks: 1.
+ - use_allocation_guard: 0.
+
+
+Internal statistics:
+
+num_allocs_failed_limit: 18.
+num_arena_births: 1776.
+num_arena_deaths: 0.
+num_vsnodes_births: 3.
+num_vsnodes_deaths: 0.
+num_space_committed: 2129.
+num_space_uncommitted: 0.
+num_chunks_returned_to_freelist: 18.
+num_chunks_taken_from_freelist: 6768.
+num_chunk_merges: 12.
+num_chunk_splits: 4921.
+num_chunks_enlarged: 3781.
+num_inconsistent_stats: 0.
+
+CodeHeap 'non-profiled nmethods': size=120000Kb used=7482Kb max_used=8654Kb free=112517Kb
+ bounds [0x0000023b07ad0000, 0x0000023b08350000, 0x0000023b0f000000]
+CodeHeap 'profiled nmethods': size=120000Kb used=19297Kb max_used=26098Kb free=100702Kb
+ bounds [0x0000023b00000000, 0x0000023b01980000, 0x0000023b07530000]
+CodeHeap 'non-nmethods': size=5760Kb used=2192Kb max_used=2242Kb free=3567Kb
+ bounds [0x0000023b07530000, 0x0000023b077a0000, 0x0000023b07ad0000]
+ total_blobs=12149 nmethods=11079 adapters=977
+ compilation: enabled
+              stopped_count=0, restarted_count=0
+ full_count=0
+
+Compilation events (20 events):
+Event: 88.213 Thread 0x0000023b17820090 17088       3       org.apache.hadoop.util.DataChecksum::calculateChunkedSums (164 bytes)
+Event: 88.213 Thread 0x0000023b17820090 nmethod 17088 0x0000023b001a4790 code [0x0000023b001a49a0, 0x0000023b001a51a8]
+Event: 88.213 Thread 0x0000023b17820090 17089       3       org.apache.hadoop.util.NativeCrc32::isAvailable (12 bytes)
+Event: 88.213 Thread 0x0000023b17820090 nmethod 17089 0x0000023b001a7290 code [0x0000023b001a7420, 0x0000023b001a7588]
+Event: 88.213 Thread 0x0000023b17820090 17090       3       org.apache.hadoop.util.NativeCrc32::calculateChunkedSumsByteArray (18 bytes)
+Event: 88.213 Thread 0x0000023b17820090 nmethod 17090 0x0000023b001acf90 code [0x0000023b001ad120, 0x0000023b001ad260]
+Event: 88.216 Thread 0x0000023b182c5b20 nmethod 17055 0x0000023b07d69790 code [0x0000023b07d69a20, 0x0000023b07d6b130]
+Event: 88.216 Thread 0x0000023b182c5b20 17066       4       scala.collection.immutable.HashSet$HashSetBuilder::addOne (278 bytes)
+Event: 88.227 Thread 0x0000023b182c5b20 nmethod 17066 0x0000023b07b18f90 code [0x0000023b07b19180, 0x0000023b07b19d28]
+Event: 88.227 Thread 0x0000023b182c5b20 17079       4       org.codehaus.janino.Parser::parseConditionalExpression (63 bytes)
+Event: 88.570 Thread 0x0000023b17820090 17091       1       org.apache.spark.scheduler.StageInfo::numTasks (5 bytes)
+Event: 89.261 Thread 0x0000023b17820090 nmethod 17091 0x0000023b07b44490 code [0x0000023b07b44600, 0x0000023b07b446c8]
+Event: 89.298 Thread 0x0000023b17820090 17093   !   3       java.lang.Thread::exit (58 bytes)
+Event: 89.299 Thread 0x0000023b17820090 nmethod 17093 0x0000023b0008c190 code [0x0000023b0008c380, 0x0000023b0008cae0]
+Event: 89.299 Thread 0x0000023b17820090 17094       3       java.lang.Thread::clearReferences (40 bytes)
+Event: 89.299 Thread 0x0000023b17820090 nmethod 17094 0x0000023b001d3c10 code [0x0000023b001d3da0, 0x0000023b001d4090]
+Event: 89.873 Thread 0x0000023b17820090 17095       1       org.apache.spark.status.LiveStage::schedulingPool (5 bytes)
+Event: 89.873 Thread 0x0000023b17820090 nmethod 17095 0x0000023b07b46190 code [0x0000023b07b46300, 0x0000023b07b463c8]
+Event: 89.873 Thread 0x0000023b17820090 17096       1       org.apache.spark.scheduler.StageInfo::rddInfos (5 bytes)
+Event: 89.873 Thread 0x0000023b17820090 nmethod 17096 0x0000023b07b47b90 code [0x0000023b07b47d00, 0x0000023b07b47dc8]
+
+GC Heap History (20 events):
+Event: 29.040 GC heap before
+{Heap before GC invocations=31 (full 0):
+ garbage-first heap   total 233472K, used 130534K [0x0000000080000000, 0x0000000100000000)
+  region size 1024K, 10 young (10240K), 8 survivors (8192K)
+ Metaspace       used 134236K, committed 135296K, reserved 1179648K
+  class space    used 17096K, committed 17536K, reserved 1048576K
+}
+Event: 29.044 GC heap after
+{Heap after GC invocations=32 (full 0):
+ garbage-first heap   total 233472K, used 128651K [0x0000000080000000, 0x0000000100000000)
+  region size 1024K, 7 young (7168K), 7 survivors (7168K)
+ Metaspace       used 134236K, committed 135296K, reserved 1179648K
+  class space    used 17096K, committed 17536K, reserved 1048576K
+}
+Event: 29.638 GC heap before
+{Heap before GC invocations=33 (full 0):
+ garbage-first heap   total 233472K, used 201355K [0x0000000080000000, 0x0000000100000000)
+  region size 1024K, 65 young (66560K), 7 survivors (7168K)
+ Metaspace       used 134278K, committed 135360K, reserved 1179648K
+  class space    used 17096K, committed 17536K, reserved 1048576K
+}
+Event: 29.640 GC heap after
+{Heap after GC invocations=34 (full 0):
+ garbage-first heap   total 233472K, used 124405K [0x0000000080000000, 0x0000000100000000)
+  region size 1024K, 3 young (3072K), 3 survivors (3072K)
+ Metaspace       used 134278K, committed 135360K, reserved 1179648K
+  class space    used 17096K, committed 17536K, reserved 1048576K
+}
+Event: 29.920 GC heap before
+{Heap before GC invocations=34 (full 0):
+ garbage-first heap   total 233472K, used 213493K [0x0000000080000000, 0x0000000100000000)
+  region size 1024K, 69 young (70656K), 3 survivors (3072K)
+ Metaspace       used 134319K, committed 135360K, reserved 1179648K
+  class space    used 17097K, committed 17536K, reserved 1048576K
+}
+Event: 29.922 GC heap after
+{Heap after GC invocations=35 (full 0):
+ garbage-first heap   total 233472K, used 120271K [0x0000000080000000, 0x0000000100000000)
+  region size 1024K, 4 young (4096K), 4 survivors (4096K)
+ Metaspace       used 134319K, committed 135360K, reserved 1179648K
+  class space    used 17097K, committed 17536K, reserved 1048576K
+}
+Event: 30.237 GC heap before
+{Heap before GC invocations=35 (full 0):
+ garbage-first heap   total 233472K, used 128463K [0x0000000080000000, 0x0000000100000000)
+  region size 1024K, 13 young (13312K), 4 survivors (4096K)
+ Metaspace       used 134349K, committed 135488K, reserved 1179648K
+  class space    used 17099K, committed 17600K, reserved 1048576K
+}
+Event: 30.239 GC heap after
+{Heap after GC invocations=36 (full 0):
+ garbage-first heap   total 233472K, used 121008K [0x0000000080000000, 0x0000000100000000)
+  region size 1024K, 4 young (4096K), 4 survivors (4096K)
+ Metaspace       used 134349K, committed 135488K, reserved 1179648K
+  class space    used 17099K, committed 17600K, reserved 1048576K
+}
+Event: 40.442 GC heap before
+{Heap before GC invocations=37 (full 0):
+ garbage-first heap   total 233472K, used 223408K [0x0000000080000000, 0x0000000100000000)
+  region size 1024K, 79 young (80896K), 4 survivors (4096K)
+ Metaspace       used 134531K, committed 135616K, reserved 1179648K
+  class space    used 17114K, committed 17600K, reserved 1048576K
+}
+Event: 40.447 GC heap after
+{Heap after GC invocations=38 (full 0):
+ garbage-first heap   total 233472K, used 123745K [0x0000000080000000, 0x0000000100000000)
+  region size 1024K, 7 young (7168K), 7 survivors (7168K)
+ Metaspace       used 134531K, committed 135616K, reserved 1179648K
+  class space    used 17114K, committed 17600K, reserved 1048576K
+}
+Event: 58.385 GC heap before
+{Heap before GC invocations=38 (full 0):
+ garbage-first heap   total 233472K, used 222049K [0x0000000080000000, 0x0000000100000000)
+  region size 1024K, 83 young (84992K), 7 survivors (7168K)
+ Metaspace       used 134788K, committed 135936K, reserved 1179648K
+  class space    used 17120K, committed 17600K, reserved 1048576K
+}
+Event: 58.390 GC heap after
+{Heap after GC invocations=39 (full 0):
+ garbage-first heap   total 235520K, used 126343K [0x0000000080000000, 0x0000000100000000)
+  region size 1024K, 9 young (9216K), 9 survivors (9216K)
+ Metaspace       used 134788K, committed 135936K, reserved 1179648K
+  class space    used 17120K, committed 17600K, reserved 1048576K
+}
+Event: 58.415 GC heap before
+{Heap before GC invocations=39 (full 0):
+ garbage-first heap   total 235520K, used 131463K [0x0000000080000000, 0x0000000100000000)
+  region size 1024K, 15 young (15360K), 9 survivors (9216K)
+ Metaspace       used 134789K, committed 135936K, reserved 1179648K
+  class space    used 17120K, committed 17600K, reserved 1048576K
+}
+Event: 58.420 GC heap after
+{Heap after GC invocations=40 (full 0):
+ garbage-first heap   total 235520K, used 125520K [0x0000000080000000, 0x0000000100000000)
+  region size 1024K, 5 young (5120K), 5 survivors (5120K)
+ Metaspace       used 134789K, committed 135936K, reserved 1179648K
+  class space    used 17120K, committed 17600K, reserved 1048576K
+}
+Event: 60.076 GC heap before
+{Heap before GC invocations=41 (full 0):
+ garbage-first heap   total 247808K, used 246352K [0x0000000080000000, 0x0000000100000000)
+  region size 1024K, 86 young (88064K), 5 survivors (5120K)
+ Metaspace       used 134932K, committed 136000K, reserved 1179648K
+  class space    used 17131K, committed 17600K, reserved 1048576K
+}
+Event: 60.080 GC heap after
+{Heap after GC invocations=42 (full 0):
+ garbage-first heap   total 254976K, used 128690K [0x0000000080000000, 0x0000000100000000)
+  region size 1024K, 7 young (7168K), 7 survivors (7168K)
+ Metaspace       used 134932K, committed 136000K, reserved 1179648K
+  class space    used 17131K, committed 17600K, reserved 1048576K
+}
+Event: 85.968 GC heap before
+{Heap before GC invocations=42 (full 0):
+ garbage-first heap   total 257024K, used 254642K [0x0000000080000000, 0x0000000100000000)
+  region size 1024K, 108 young (110592K), 7 survivors (7168K)
+ Metaspace       used 135187K, committed 136384K, reserved 1179648K
+  class space    used 17157K, committed 17664K, reserved 1048576K
+}
+Event: 85.973 GC heap after
+{Heap after GC invocations=43 (full 0):
+ garbage-first heap   total 265216K, used 127196K [0x0000000080000000, 0x0000000100000000)
+  region size 1024K, 7 young (7168K), 7 survivors (7168K)
+ Metaspace       used 135187K, committed 136384K, reserved 1179648K
+  class space    used 17157K, committed 17664K, reserved 1048576K
+}
+Event: 85.985 GC heap before
+{Heap before GC invocations=43 (full 0):
+ garbage-first heap   total 265216K, used 131292K [0x0000000080000000, 0x0000000100000000)
+  region size 1024K, 12 young (12288K), 7 survivors (7168K)
+ Metaspace       used 135191K, committed 136384K, reserved 1179648K
+  class space    used 17157K, committed 17664K, reserved 1048576K
+}
+Event: 85.988 GC heap after
+{Heap after GC invocations=44 (full 0):
+ garbage-first heap   total 265216K, used 125956K [0x0000000080000000, 0x0000000100000000)
+  region size 1024K, 8 young (8192K), 8 survivors (8192K)
+ Metaspace       used 135191K, committed 136384K, reserved 1179648K
+  class space    used 17157K, committed 17664K, reserved 1048576K
+}
+
+Dll operation events (14 events):
+Event: 0.007 Loaded shared library C:\Program Files\Java\jdk-20\bin\java.dll
+Event: 0.015 Loaded shared library C:\Program Files\Java\jdk-20\bin\jsvml.dll
+Event: 0.187 Loaded shared library C:\Program Files\Java\jdk-20\bin\net.dll
+Event: 0.188 Loaded shared library C:\Program Files\Java\jdk-20\bin\nio.dll
+Event: 0.192 Loaded shared library C:\Program Files\Java\jdk-20\bin\zip.dll
+Event: 0.535 Loaded shared library C:\Program Files\Java\jdk-20\bin\jimage.dll
+Event: 0.910 Loaded shared library C:\Program Files\Java\jdk-20\bin\management.dll
+Event: 0.912 Loaded shared library C:\Program Files\Java\jdk-20\bin\management_ext.dll
+Event: 6.782 Loaded shared library C:\Program Files\Java\jdk-20\bin\verify.dll
+Event: 7.615 Loaded shared library C:\hadoop\bin\hadoop.dll
+Event: 7.682 Loaded shared library C:\Program Files\Java\jdk-20\bin\jaas.dll
+Event: 7.855 Loaded shared library C:\Program Files\Java\jdk-20\bin\extnet.dll
+Event: 8.328 Loaded shared library C:\Program Files\Java\jdk-20\bin\sunmscapi.dll
+Event: 21.122 Loaded shared library C:\Users\chauh\AppData\Local\Temp\liblz4-java-417004380079351830.so
+
+Deoptimization events (20 events):
+Event: 58.837 Thread 0x0000023b22c235d0 Uncommon trap: trap_request=0xffffffc6 fr.pc=0x0000023b081c184c relative=0x000000000000038c
+Event: 58.837 Thread 0x0000023b22c235d0 Uncommon trap: reason=bimorphic_or_optimized_type_check action=maybe_recompile pc=0x0000023b081c184c method=org.apache.spark.sql.execution.streaming.WatermarkSupport.$anonfun$removeKeysOlderThanWatermark$2(Lorg/apache/spark/sql/execution/streaming/Waterma
+Event: 58.837 Thread 0x0000023b22c235d0 DEOPT PACKING pc=0x0000023b081c184c sp=0x000000ba655fdea0
+Event: 58.837 Thread 0x0000023b22c235d0 DEOPT UNPACKING pc=0x0000023b07599d22 sp=0x000000ba655fde68 mode 2
+Event: 59.300 Thread 0x0000023b22c235d0 DEOPT PACKING pc=0x0000023b013e7a43 sp=0x000000ba655fed90
+Event: 59.300 Thread 0x0000023b22c235d0 DEOPT UNPACKING pc=0x0000023b0759a4c2 sp=0x000000ba655fe2c8 mode 0
+Event: 60.056 Thread 0x0000023b22c225e0 DEOPT PACKING pc=0x0000023b018839ae sp=0x000000ba654fea10
+Event: 60.056 Thread 0x0000023b22c225e0 DEOPT UNPACKING pc=0x0000023b0759a4c2 sp=0x000000ba654fde78 mode 0
+Event: 62.449 Thread 0x0000023b1aa80580 Uncommon trap: trap_request=0xffffff45 fr.pc=0x0000023b07c57d10 relative=0x0000000000000090
+Event: 62.449 Thread 0x0000023b1aa80580 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000023b07c57d10 method=java.util.LinkedHashMap.afterNodeInsertion(Z)V @ 18 c2
+Event: 62.449 Thread 0x0000023b1aa80580 DEOPT PACKING pc=0x0000023b07c57d10 sp=0x000000ba64cfe5d0
+Event: 62.449 Thread 0x0000023b1aa80580 DEOPT UNPACKING pc=0x0000023b07599d22 sp=0x000000ba64cfe550 mode 2
+Event: 84.734 Thread 0x0000023b1aa80580 DEOPT PACKING pc=0x0000023b0047393d sp=0x000000ba64cfc850
+Event: 84.734 Thread 0x0000023b1aa80580 DEOPT UNPACKING pc=0x0000023b0759a4c2 sp=0x000000ba64cfbd18 mode 0
+Event: 84.747 Thread 0x0000023b1aa80580 DEOPT PACKING pc=0x0000023b002e91d5 sp=0x000000ba64cfcb20
+Event: 84.748 Thread 0x0000023b1aa80580 DEOPT UNPACKING pc=0x0000023b0759a4c2 sp=0x000000ba64cfbfa8 mode 0
+Event: 84.958 Thread 0x0000023b22c24b10 Uncommon trap: trap_request=0xffffff45 fr.pc=0x0000023b082312a0 relative=0x00000000000000a0
+Event: 85.821 Thread 0x0000023b22c24b10 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000023b082312a0 method=java.util.concurrent.atomic.LongAdder.add(J)V @ 24 c2
+Event: 85.837 Thread 0x0000023b22c24b10 DEOPT PACKING pc=0x0000023b082312a0 sp=0x000000ba65bff560
+Event: 85.837 Thread 0x0000023b22c24b10 DEOPT UNPACKING pc=0x0000023b07599d22 sp=0x000000ba65bff4b8 mode 2
+
+Classes loaded (20 events):
+Event: 28.198 Loading class java/util/concurrent/CompletableFuture$UniCompletion
+Event: 28.199 Loading class java/util/concurrent/CompletableFuture$UniCompletion done
+Event: 28.199 Loading class java/util/concurrent/CompletableFuture$BiCompletion done
+Event: 28.199 Loading class java/util/concurrent/CompletableFuture$BiRelay done
+Event: 28.199 Loading class java/util/concurrent/CompletableFuture$CoCompletion
+Event: 28.199 Loading class java/util/concurrent/CompletableFuture$CoCompletion done
+Event: 28.199 Loading class java/util/concurrent/CompletableFuture$UniWhenComplete
+Event: 28.200 Loading class java/util/concurrent/CompletableFuture$UniWhenComplete done
+Event: 28.200 Loading class java/util/concurrent/CompletableFuture$UniApply
+Event: 28.200 Loading class java/util/concurrent/CompletableFuture$UniApply done
+Event: 28.200 Loading class java/util/concurrent/CompletableFuture$Signaller
+Event: 28.201 Loading class java/util/concurrent/CompletableFuture$Signaller done
+Event: 28.730 Loading class java/lang/SparkSession$
+Event: 28.730 Loading class java/lang/SparkSession$ done
+Event: 40.535 Loading class jdk/internal/event/ThreadSleepEvent
+Event: 40.536 Loading class jdk/internal/event/ThreadSleepEvent done
+Event: 57.741 Loading class java/lang/SparkSession$
+Event: 57.741 Loading class java/lang/SparkSession$ done
+Event: 84.773 Loading class java/lang/SparkSession$
+Event: 84.773 Loading class java/lang/SparkSession$ done
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (20 events):
+Event: 39.627 Thread 0x0000023b1aa80580 Exception <a 'org/apache/hadoop/io/nativeio/NativeIOException'{0x000000008a6d85b0}> (0x000000008a6d85b0) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 50.317 Thread 0x0000023b1aa80580 Exception <a 'org/apache/hadoop/io/nativeio/NativeIOException'{0x000000008e12f888}> (0x000000008e12f888) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 50.318 Thread 0x0000023b1aa80580 Exception <a 'org/apache/hadoop/io/nativeio/NativeIOException'{0x000000008e137bd0}> (0x000000008e137bd0) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 58.801 Thread 0x0000023b22c235d0 Exception <a 'org/apache/hadoop/io/nativeio/NativeIOException'{0x000000008c3de268}> (0x000000008c3de268) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 58.804 Thread 0x0000023b22c235d0 Exception <a 'org/apache/hadoop/io/nativeio/NativeIOException'{0x000000008c3e6a58}> (0x000000008c3e6a58) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 59.399 Thread 0x0000023b22c22b30 Exception <a 'org/apache/hadoop/io/nativeio/NativeIOException'{0x0000000089f25f18}> (0x0000000089f25f18) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 59.399 Thread 0x0000023b22c225e0 Exception <a 'org/apache/hadoop/io/nativeio/NativeIOException'{0x0000000089e830e0}> (0x0000000089e830e0) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 59.400 Thread 0x0000023b1b725010 Exception <a 'org/apache/hadoop/io/nativeio/NativeIOException'{0x0000000089fde740}> (0x0000000089fde740) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 59.401 Thread 0x0000023b22c22b30 Exception <a 'org/apache/hadoop/io/nativeio/NativeIOException'{0x0000000089f2e708}> (0x0000000089f2e708) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 59.401 Thread 0x0000023b22c225e0 Exception <a 'org/apache/hadoop/io/nativeio/NativeIOException'{0x0000000089e8b8d0}> (0x0000000089e8b8d0) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 59.405 Thread 0x0000023b1b725010 Exception <a 'org/apache/hadoop/io/nativeio/NativeIOException'{0x0000000089fe6f30}> (0x0000000089fe6f30) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 59.410 Thread 0x0000023b22c235d0 Exception <a 'org/apache/hadoop/io/nativeio/NativeIOException'{0x0000000089a24640}> (0x0000000089a24640) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 59.412 Thread 0x0000023b22c235d0 Exception <a 'org/apache/hadoop/io/nativeio/NativeIOException'{0x0000000089a2ce30}> (0x0000000089a2ce30) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 62.241 Thread 0x0000023b1aa80580 Exception <a 'org/apache/hadoop/io/nativeio/NativeIOException'{0x000000008eba9028}> (0x000000008eba9028) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 62.242 Thread 0x0000023b1aa80580 Exception <a 'org/apache/hadoop/io/nativeio/NativeIOException'{0x000000008ebb1370}> (0x000000008ebb1370) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 80.294 Thread 0x0000023b1aa80580 Exception <a 'org/apache/hadoop/io/nativeio/NativeIOException'{0x000000008eac8150}> (0x000000008eac8150) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 80.295 Thread 0x0000023b1aa80580 Exception <a 'org/apache/hadoop/io/nativeio/NativeIOException'{0x000000008e977438}> (0x000000008e977438) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 84.730 Thread 0x0000023b1b726ff0 Exception <a 'java/lang/NoSuchMethodError'{0x000000008ba89d18}: 'int java.lang.invoke.DirectMethodHandle$Holder.invokeStatic(java.lang.Object, java.lang.Object, long, java.lang.Object)'> (0x000000008ba89d18) 
+thrown [s\open\src\hotspot\share\interpreter\linkResolver.cpp, line 773]
+Event: 88.198 Thread 0x0000023b22c225e0 Exception <a 'org/apache/hadoop/io/nativeio/NativeIOException'{0x000000008d64eeb0}> (0x000000008d64eeb0) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+Event: 88.200 Thread 0x0000023b22c225e0 Exception <a 'org/apache/hadoop/io/nativeio/NativeIOException'{0x000000008d6576a0}> (0x000000008d6576a0) 
+thrown [s\open\src\hotspot\share\prims\jni.cpp, line 519]
+
+VM Operations (20 events):
+Event: 84.190 Executing VM operation: Cleanup
+Event: 84.190 Executing VM operation: Cleanup done
+Event: 85.193 Executing VM operation: Cleanup
+Event: 85.837 Executing VM operation: Cleanup done
+Event: 85.968 Executing VM operation: G1CollectForAllocation
+Event: 85.973 Executing VM operation: G1CollectForAllocation done
+Event: 85.984 Executing VM operation: G1TryInitiateConcMark
+Event: 85.988 Executing VM operation: G1TryInitiateConcMark done
+Event: 86.028 Executing VM operation: G1PauseRemark
+Event: 86.059 Executing VM operation: G1PauseRemark done
+Event: 86.073 Executing VM operation: G1PauseCleanup
+Event: 86.073 Executing VM operation: G1PauseCleanup done
+Event: 87.081 Executing VM operation: Cleanup
+Event: 87.129 Executing VM operation: Cleanup done
+Event: 88.143 Executing VM operation: Cleanup
+Event: 88.143 Executing VM operation: Cleanup done
+Event: 89.150 Executing VM operation: Cleanup
+Event: 89.261 Executing VM operation: Cleanup done
+Event: 90.269 Executing VM operation: Cleanup
+Event: 90.269 Executing VM operation: Cleanup done
+
+Events (20 events):
+Event: 86.059 Thread 0x0000023b134e2140 flushing nmethod 0x0000023b07ad4490
+Event: 86.059 Thread 0x0000023b134e2140 flushing nmethod 0x0000023b07ad0310
+Event: 86.059 Thread 0x0000023b134e2140 flushing nmethod 0x0000023b07ad0010
+Event: 87.542 Thread 0x0000023b182c6640 Thread exited: 0x0000023b182c6640
+Event: 88.220 Thread 0x0000023b22c23b20 Thread added: 0x0000023b22c23b20
+Event: 88.247 Thread 0x0000023b22c23b20 Thread exited: 0x0000023b22c23b20
+Event: 89.103 Thread 0x0000023b22fb9aa0 Thread exited: 0x0000023b22fb9aa0
+Event: 89.103 Thread 0x0000023b22fb9ff0 Thread exited: 0x0000023b22fb9ff0
+Event: 89.103 Thread 0x0000023b22fb9550 Thread exited: 0x0000023b22fb9550
+Event: 89.103 Thread 0x0000023b22fb9000 Thread exited: 0x0000023b22fb9000
+Event: 89.261 Thread 0x0000023b22c245c0 Thread added: 0x0000023b22c245c0
+Event: 89.261 Thread 0x0000023b22fb8ab0 Thread exited: 0x0000023b22fb8ab0
+Event: 89.272 Thread 0x0000023b22c245c0 Thread exited: 0x0000023b22c245c0
+Event: 89.276 Thread 0x0000023b22c23080 Thread added: 0x0000023b22c23080
+Event: 89.298 Thread 0x0000023b22c23080 Thread exited: 0x0000023b22c23080
+Event: 89.936 Thread 0x0000023b22fbafe0 Thread exited: 0x0000023b22fbafe0
+Event: 89.936 Thread 0x0000023b22fbaa90 Thread exited: 0x0000023b22fbaa90
+Event: 89.936 Thread 0x0000023b22fbb530 Thread exited: 0x0000023b22fbb530
+Event: 89.936 Thread 0x0000023b22fb8010 Thread exited: 0x0000023b22fb8010
+Event: 89.936 Thread 0x0000023b22fba540 Thread exited: 0x0000023b22fba540
+
+
+Dynamic libraries:
+0x00007ff641260000 - 0x00007ff641270000 	C:\Program Files\Java\jdk-20\bin\java.exe
+0x00007ff936600000 - 0x00007ff936867000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ff935d60000 - 0x00007ff935e29000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ff933c30000 - 0x00007ff934024000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ff932f80000 - 0x00007ff9330cb000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ff907420000 - 0x00007ff907439000 	C:\Program Files\Java\jdk-20\bin\jli.dll
+0x00007ff907400000 - 0x00007ff90741b000 	C:\Program Files\Java\jdk-20\bin\VCRUNTIME140.dll
+0x00007ff934a70000 - 0x00007ff934b26000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ff934790000 - 0x00007ff934839000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ff935c50000 - 0x00007ff935cf7000 	C:\WINDOWS\System32\sechost.dll
+0x00007ff935eb0000 - 0x00007ff935fc8000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ff935060000 - 0x00007ff935225000 	C:\WINDOWS\System32\USER32.dll
+0x00007ff920f30000 - 0x00007ff9211c3000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.26100.8115_none_3e075c82e3354f9c\COMCTL32.dll
+0x00007ff934030000 - 0x00007ff934057000 	C:\WINDOWS\System32\win32u.dll
+0x00007ff934b30000 - 0x00007ff934b5b000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ff934260000 - 0x00007ff93438a000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ff932ed0000 - 0x00007ff932f73000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ff92ce60000 - 0x00007ff92ce6b000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ff934750000 - 0x00007ff934782000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ff924850000 - 0x00007ff92485c000 	C:\Program Files\Java\jdk-20\bin\vcruntime140_1.dll
+0x00007ff8dfd10000 - 0x00007ff8dfd9e000 	C:\Program Files\Java\jdk-20\bin\msvcp140.dll
+0x00007ff888d60000 - 0x00007ff8899f7000 	C:\Program Files\Java\jdk-20\bin\server\jvm.dll
+0x00007ff92e660000 - 0x00007ff92e66a000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ff92c770000 - 0x00007ff92c7a6000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ff9349e0000 - 0x00007ff934a60000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ff931c60000 - 0x00007ff931c7b000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007ff9097a0000 - 0x00007ff9097aa000 	C:\Program Files\Java\jdk-20\bin\jimage.dll
+0x00007ff9262c0000 - 0x00007ff926502000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ff934c70000 - 0x00007ff934ff2000 	C:\WINDOWS\System32\combase.dll
+0x00007ff935230000 - 0x00007ff935307000 	C:\WINDOWS\System32\OLEAUT32.dll
+0x00007ff920de0000 - 0x00007ff920e1b000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ff9330d0000 - 0x00007ff933175000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ff8dfce0000 - 0x00007ff8dfd06000 	C:\Program Files\Java\jdk-20\bin\java.dll
+0x00007ff8a9e50000 - 0x00007ff8a9f27000 	C:\Program Files\Java\jdk-20\bin\jsvml.dll
+0x00007ff9354d0000 - 0x00007ff935c36000 	C:\WINDOWS\System32\SHELL32.dll
+0x00007ff934060000 - 0x00007ff9341ca000 	C:\WINDOWS\System32\wintypes.dll
+0x00007ff933300000 - 0x00007ff933b65000 	C:\WINDOWS\System32\windows.storage.dll
+0x00007ff9353d0000 - 0x00007ff9354c7000 	C:\WINDOWS\System32\SHCORE.dll
+0x00007ff934c00000 - 0x00007ff934c66000 	C:\WINDOWS\System32\shlwapi.dll
+0x00007ff932df0000 - 0x00007ff932e19000 	C:\WINDOWS\SYSTEM32\profapi.dll
+0x00007ff8dfcc0000 - 0x00007ff8dfcd3000 	C:\Program Files\Java\jdk-20\bin\net.dll
+0x00007ff92cc70000 - 0x00007ff92cd9d000 	C:\WINDOWS\SYSTEM32\WINHTTP.dll
+0x00007ff9321d0000 - 0x00007ff93223c000 	C:\WINDOWS\system32\mswsock.dll
+0x00007ff8dfca0000 - 0x00007ff8dfcb6000 	C:\Program Files\Java\jdk-20\bin\nio.dll
+0x00007ff8de040000 - 0x00007ff8de058000 	C:\Program Files\Java\jdk-20\bin\zip.dll
+0x00007ff908010000 - 0x00007ff90801a000 	C:\Program Files\Java\jdk-20\bin\management.dll
+0x00007ff907fe0000 - 0x00007ff907feb000 	C:\Program Files\Java\jdk-20\bin\management_ext.dll
+0x00007ff935000000 - 0x00007ff935008000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007ff91a460000 - 0x00007ff91a478000 	C:\WINDOWS\system32\napinsp.dll
+0x00007ff931710000 - 0x00007ff931842000 	C:\WINDOWS\SYSTEM32\DNSAPI.dll
+0x00007ff931670000 - 0x00007ff9316a2000 	C:\WINDOWS\SYSTEM32\IPHLPAPI.DLL
+0x00007ff935310000 - 0x00007ff93531a000 	C:\WINDOWS\System32\NSI.dll
+0x00007ff919b90000 - 0x00007ff919ba3000 	C:\WINDOWS\System32\winrnr.dll
+0x00007ff919b60000 - 0x00007ff919b82000 	C:\WINDOWS\system32\nlansp_c.dll
+0x00007ff927bc0000 - 0x00007ff927bd6000 	C:\WINDOWS\system32\wshbth.dll
+0x00007ff929f60000 - 0x00007ff929f6b000 	C:\Windows\System32\rasadhlp.dll
+0x00007ff92d570000 - 0x00007ff92d5f6000 	C:\WINDOWS\System32\fwpuclnt.dll
+0x00007ff9324b0000 - 0x00007ff9324cb000 	C:\WINDOWS\SYSTEM32\CRYPTSP.dll
+0x00007ff931bc0000 - 0x00007ff931bf9000 	C:\WINDOWS\system32\rsaenh.dll
+0x00007ff932280000 - 0x00007ff9322b3000 	C:\WINDOWS\SYSTEM32\USERENV.dll
+0x00007ff932dc0000 - 0x00007ff932dea000 	C:\WINDOWS\SYSTEM32\bcrypt.dll
+0x00007ff9324d0000 - 0x00007ff9324dc000 	C:\WINDOWS\SYSTEM32\CRYPTBASE.dll
+0x00007ff92ce90000 - 0x00007ff92cead000 	C:\WINDOWS\SYSTEM32\dhcpcsvc6.DLL
+0x00007ff92cda0000 - 0x00007ff92cdc5000 	C:\WINDOWS\SYSTEM32\dhcpcsvc.DLL
+0x00007ff906c10000 - 0x00007ff906c20000 	C:\Program Files\Java\jdk-20\bin\verify.dll
+0x00007ff8de020000 - 0x00007ff8de03a000 	C:\hadoop\bin\hadoop.dll
+0x00007ff924150000 - 0x00007ff92416a000 	C:\WINDOWS\SYSTEM32\NETAPI32.dll
+0x00007ff9316b0000 - 0x00007ff931700000 	C:\WINDOWS\SYSTEM32\AUTHZ.dll
+0x00000000652a0000 - 0x0000000065372000 	C:\WINDOWS\SYSTEM32\MSVCR100.dll
+0x00007ff9314e0000 - 0x00007ff9314ed000 	C:\WINDOWS\SYSTEM32\NETUTILS.DLL
+0x00007ff9314f0000 - 0x00007ff93150b000 	C:\WINDOWS\SYSTEM32\SAMCLI.DLL
+0x00007ff905f90000 - 0x00007ff905f99000 	C:\Program Files\Java\jdk-20\bin\jaas.dll
+0x00007ff905160000 - 0x00007ff905167000 	C:\Program Files\Java\jdk-20\bin\extnet.dll
+0x00007ff905080000 - 0x00007ff90508e000 	C:\Program Files\Java\jdk-20\bin\sunmscapi.dll
+0x00007ff933180000 - 0x00007ff9332f7000 	C:\WINDOWS\System32\CRYPT32.dll
+0x00007ff9326d0000 - 0x00007ff932700000 	C:\WINDOWS\SYSTEM32\ncrypt.dll
+0x00007ff932680000 - 0x00007ff9326bf000 	C:\WINDOWS\SYSTEM32\NTASN1.dll
+0x00007ff8b2090000 - 0x00007ff8b2098000 	C:\WINDOWS\system32\wshunix.dll
+0x00007ff931d80000 - 0x00007ff931db6000 	C:\WINDOWS\SYSTEM32\ntmarta.dll
+0x0000000066f40000 - 0x0000000066fc4000 	C:\Users\chauh\AppData\Local\Temp\liblz4-java-417004380079351830.so
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Program Files\Java\jdk-20\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.26100.8115_none_3e075c82e3354f9c;C:\Program Files\Java\jdk-20\bin\server;C:\hadoop\bin;C:\Users\chauh\AppData\Local\Temp
+
+VM Arguments:
+jvm_args: -Xmx2g -XX:+IgnoreUnrecognizedVMOptions --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.nio.cs=ALL-UNNAMED --add-opens=java.base/sun.security.action=ALL-UNNAMED --add-opens=java.base/sun.util.calendar=ALL-UNNAMED --add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED -Djdk.reflect.useDirectMethodHandle=false 
+java_command: org.apache.spark.deploy.SparkSubmit --conf spark.driver.memory=2g --conf spark.jars.packages=org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.3 --conf spark.app.name=FraudDetectionStreaming --conf spark.sql.streaming.checkpointLocation=checkpoints/ --conf spark.sql.shuffle.partitions=4 pyspark-shell
+java_class_path (initial): C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\conf;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\activation-1.1.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\aircompressor-0.21.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\algebra_2.12-2.0.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\annotations-17.0.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\antlr-runtime-3.5.2.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\antlr4-runtime-4.9.3.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\aopalliance-repackaged-2.6.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\arpack-3.0.3.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\arpack_combined_all-0.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\arrow-format-11.0.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\arrow-memory-core-11.0.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\arrow-memory-netty-11.0.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\arrow-vector-11.0.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\audience-annotations-0.5.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\avro-1.11.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\avro-ipc-1.11.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\avro-mapred-1.11.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\blas-3.0.3.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\bonecp-0.8.0.RELEASE.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\breeze-macros_2.12-2.1.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\breeze_2.12-2.1.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\cats-kernel_2.12-2.1.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\chill-java-0.10.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\chill_2.12-0.10.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\commons-cli-1.5.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\commons-codec-1.15.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\commons-collections-3.2.2.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\commons-collections4-4.4.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\commons-compiler-3.1.9.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\commons-compress-1.22.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\commons-crypto-1.1.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\commons-dbcp-1.4.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\commons-io-2.11.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\commons-lang-2.6.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\commons-lang3-3.12.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\commons-logging-1.1.3.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\commons-math3-3.6.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\commons-pool-1.5.4.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\commons-text-1.10.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\compress-lzf-1.1.2.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\curator-client-2.13.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\curator-framework-2.13.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\curator-recipes-2.13.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\datanucleus-api-jdo-4.2.4.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\datanucleus-core-4.1.17.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\datanucleus-rdbms-4.1.19.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\derby-10.14.2.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\dropwizard-metrics-hadoop-metrics2-reporter-0.1.2.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\flatbuffers-java-1.12.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\gson-2.2.4.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\guava-14.0.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\hadoop-client-api-3.3.4.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\hadoop-client-runtime-3.3.4.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\hadoop-shaded-guava-1.1.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\hadoop-yarn-server-web-proxy-3.3.4.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\HikariCP-2.5.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\hive-beeline-2.3.9.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\hive-cli-2.3.9.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\hive-common-2.3.9.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\hive-exec-2.3.9-core.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\hive-jdbc-2.3.9.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\hive-llap-common-2.3.9.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\hive-metastore-2.3.9.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\hive-serde-2.3.9.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\hive-service-rpc-3.1.3.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\hive-shims-0.23-2.3.9.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\hive-shims-2.3.9.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\hive-shims-common-2.3.9.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\hive-shims-scheduler-2.3.9.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\hive-storage-api-2.8.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\hk2-api-2.6.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\hk2-locator-2.6.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\hk2-utils-2.6.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\httpclient-4.5.14.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\httpcore-4.4.16.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\istack-commons-runtime-3.0.8.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\ivy-2.5.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jackson-annotations-2.14.2.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jackson-core-2.14.2.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jackson-core-asl-1.9.13.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jackson-databind-2.14.2.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jackson-dataformat-yaml-2.14.2.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jackson-datatype-jsr310-2.14.2.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jackson-mapper-asl-1.9.13.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jackson-module-scala_2.12-2.14.2.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jakarta.annotation-api-1.3.5.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jakarta.inject-2.6.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jakarta.servlet-api-4.0.3.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jakarta.validation-api-2.0.2.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jakarta.ws.rs-api-2.1.6.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jakarta.xml.bind-api-2.3.2.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\janino-3.1.9.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\javassist-3.25.0-GA.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\javax.jdo-3.2.0-m3.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\javolution-5.5.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jaxb-runtime-2.3.2.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jcl-over-slf4j-2.0.6.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jdo-api-3.0.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jersey-client-2.36.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jersey-common-2.36.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jersey-container-servlet-2.36.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jersey-container-servlet-core-2.36.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jersey-hk2-2.36.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jersey-server-2.36.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\JLargeArrays-1.5.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jline-2.14.6.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\joda-time-2.12.2.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jodd-core-3.5.2.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jpam-1.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\json-1.8.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\json4s-ast_2.12-3.7.0-M11.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\json4s-core_2.12-3.7.0-M11.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\json4s-jackson_2.12-3.7.0-M11.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\json4s-scalap_2.12-3.7.0-M11.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jsr305-3.0.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jta-1.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\JTransforms-3.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\jul-to-slf4j-2.0.6.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kryo-shaded-4.0.2.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-client-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-client-api-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-httpclient-okhttp-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-model-admissionregistration-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-model-apiextensions-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-model-apps-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-model-autoscaling-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-model-batch-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-model-certificates-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-model-common-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-model-coordination-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-model-core-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-model-discovery-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-model-events-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-model-extensions-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-model-flowcontrol-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-model-gatewayapi-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-model-metrics-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-model-networking-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-model-node-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-model-policy-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-model-rbac-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-model-scheduling-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\kubernetes-model-storageclass-6.4.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\lapack-3.0.3.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\leveldbjni-all-1.8.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\libfb303-0.9.3.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\libthrift-0.12.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\log4j-1.2-api-2.19.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\log4j-api-2.19.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\log4j-core-2.19.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\log4j-slf4j2-impl-2.19.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\logging-interceptor-3.12.12.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\lz4-java-1.8.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\mesos-1.4.3-shaded-protobuf.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\metrics-core-4.2.15.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\metrics-graphite-4.2.15.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\metrics-jmx-4.2.15.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\metrics-json-4.2.15.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\metrics-jvm-4.2.15.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\minlog-1.3.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\netty-all-4.1.87.Final.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\netty-buffer-4.1.87.Final.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\netty-codec-4.1.87.Final.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\netty-codec-http-4.1.87.Final.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\netty-codec-http2-4.1.87.Final.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\netty-codec-socks-4.1.87.Final.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\netty-common-4.1.87.Final.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\netty-handler-4.1.87.Final.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\netty-handler-proxy-4.1.87.Final.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\netty-resolver-4.1.87.Final.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\netty-transport-4.1.87.Final.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\netty-transport-classes-epoll-4.1.87.Final.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\netty-transport-classes-kqueue-4.1.87.Final.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\netty-transport-native-epoll-4.1.87.Final-linux-aarch_64.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\netty-transport-native-epoll-4.1.87.Final-linux-x86_64.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\netty-transport-native-kqueue-4.1.87.Final-osx-aarch_64.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\netty-transport-native-kqueue-4.1.87.Final-osx-x86_64.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\netty-transport-native-unix-common-4.1.87.Final.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\objenesis-3.2.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\okhttp-3.12.12.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\okio-1.15.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\opencsv-2.3.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\orc-core-1.8.3-shaded-protobuf.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\orc-mapreduce-1.8.3-shaded-protobuf.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\orc-shims-1.8.3.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\oro-2.0.8.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\osgi-resource-locator-1.0.3.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\paranamer-2.8.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\parquet-column-1.12.3.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\parquet-common-1.12.3.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\parquet-encoding-1.12.3.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\parquet-format-structures-1.12.3.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\parquet-hadoop-1.12.3.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\parquet-jackson-1.12.3.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\pickle-1.3.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\protobuf-java-2.5.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\py4j-0.10.9.7.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\RoaringBitmap-0.9.38.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\rocksdbjni-7.9.2.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\scala-collection-compat_2.12-2.7.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\scala-compiler-2.12.17.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\scala-library-2.12.17.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\scala-parser-combinators_2.12-2.1.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\scala-reflect-2.12.17.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\scala-xml_2.12-2.1.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\shims-0.9.38.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\slf4j-api-2.0.6.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\snakeyaml-1.33.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\snappy-java-1.1.9.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spark-catalyst_2.12-3.4.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spark-core_2.12-3.4.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spark-graphx_2.12-3.4.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spark-hive-thriftserver_2.12-3.4.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spark-hive_2.12-3.4.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spark-kubernetes_2.12-3.4.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spark-kvstore_2.12-3.4.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spark-launcher_2.12-3.4.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spark-mesos_2.12-3.4.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spark-mllib-local_2.12-3.4.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spark-mllib_2.12-3.4.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spark-network-common_2.12-3.4.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spark-network-shuffle_2.12-3.4.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spark-repl_2.12-3.4.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spark-sketch_2.12-3.4.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spark-sql_2.12-3.4.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spark-streaming_2.12-3.4.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spark-tags_2.12-3.4.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spark-unsafe_2.12-3.4.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spark-yarn_2.12-3.4.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spire-macros_2.12-0.17.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spire-platform_2.12-0.17.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spire-util_2.12-0.17.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\spire_2.12-0.17.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\ST4-4.0.4.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\stax-api-1.0.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\stream-2.9.6.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\super-csv-2.2.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\threeten-extra-1.7.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\tink-1.7.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\transaction-api-1.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\univocity-parsers-2.9.1.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\xbean-asm9-shaded-4.22.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\xz-1.9.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\zjsonpatch-0.3.0.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\zookeeper-3.6.3.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\zookeeper-jute-3.6.3.jar;C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Lib\site-packages\pyspark\bin\..\jars\zstd-jni-1.5.2-5.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 3                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 10                                        {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+     bool IgnoreUnrecognizedVMOptions              = true                                      {product} {command line}
+   size_t InitialHeapSize                          = 125829120                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 2147483648                                {product} {command line}
+   size_t MaxNewSize                               = 1287651328                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5839372                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122909434                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122909434                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 2147483648                             {manageable} {ergonomic}
+     bool UseCompressedClassPointers               = true                           {product lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags foldmultilines=false
+ #1: stderr all=off uptime,level,tags foldmultilines=false
+
+Environment Variables:
+PATH=C:\Users\chauh\Desktop\fraud-detection-pipeline\venv\Scripts;C:\Users\chauh\AppData\Local\Programs\Microsoft VS Code;C:\Python312\Scripts\;C:\Python312\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\mingw64\bin;C:\Program Files\dotnet\;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\chauh\AppData\Local\Programs\Python\Python311\Scripts;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\Pandoc\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Cloudflare\Cloudflare WARP\;C:\Users\chauh\AppData\Roaming\Python\Python312\Scripts;C:\Program Files\Docker\Docker\resources\bin;C:\hadoop\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\chauh\AppData\Local\Microsoft\WindowsApps;C:\Users\chauh\AppData\Local\GitHubDesktop\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2023.3.4\bin;;C:\anshu\PyCharm 2023.2.1\bin;;C:\Users\chauh\AppData\Roaming\npm;C:\Users\chauh\AppData\Local\Programs\mongosh\;C:\Users\chauh\AppData\Roaming\Python\Python312\Scripts;C:\Users\chauh\AppData\Local\Programs\cursor\resources\app\bin;C:\Users\chauh\AppData\Local\Programs\Microsoft VS Code\bin;C:\hadoop\bin;c:\Users\chauh\.vscode\extensions\ms-python.debugpy-2025.18.0-win32-x64\bundled\scripts\noConfigScripts
+USERNAME=chauh
+LANG=en_US.UTF-8
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD
+TMP=C:\Users\chauh\AppData\Local\Temp
+TEMP=C:\Users\chauh\AppData\Local\Temp
+
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 11 , 64 bit Build 26100 (10.0.26100.8115)
+OS uptime: 0 days 9:17 hours
+Hyper-V role detected
+
+CPU: total 12 (initial active 12) (12 cores per cpu, 2 threads per core) family 25 model 80 stepping 0 microcode 0xa50000c, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4a, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, erms, clmul, bmi1, bmi2, adx, sha, fma, vzeroupper, clflush, clflushopt, hv, rdtscp, rdpid, fsrm, f16c, cet_ss
+
+Memory: 4k page, system-wide physical 7562M (633M free)
+TotalPageFile size 31114M (AvailPageFile size 4M)
+current process WorkingSet (physical memory assigned to process): 393M, peak: 522M
+current process commit charge ("private bytes"): 632M, peak: 635M
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (20.0.1+9-29) for windows-amd64 JRE (20.0.1+9-29), built on 2023-03-07T13:56:11Z by "mach5one" with MS VC++ 17.1 (VS2022)
+
+END.

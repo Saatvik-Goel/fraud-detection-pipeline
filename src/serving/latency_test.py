@@ -2,7 +2,9 @@ import requests
 import time
 import statistics
 
-URL = "http://localhost:3000/predict"
+URL = "http://127.0.0.1:3000/predict"
+
+session = requests.Session()   # 🔥 VERY IMPORTANT
 
 sample_transaction = {
     "TransactionAmt": 100.0,
@@ -17,19 +19,15 @@ latencies = []
 
 print("Warming up...")
 for _ in range(10):
-    requests.post(URL, json=sample_transaction)
+    session.post(URL, json=sample_transaction)
 
 print("Running 100 predictions...")
 
 for i in range(100):
     start = time.time()
 
-    try:
-        r = requests.post(URL, json=sample_transaction, timeout=5)
-        r.raise_for_status()
-    except Exception as e:
-        print(f"Request failed: {e}")
-        continue
+    r = session.post(URL, json=sample_transaction)
+    r.raise_for_status()
 
     latency = (time.time() - start) * 1000
     latencies.append(latency)
